@@ -8,7 +8,6 @@ import { courseModules, howToDrawModules, bonusModules } from '../data/modules';
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
-  // AQUI ESTÁ A LÓGICA ATUALIZADA
   const handleModuleClick = (moduleId: number, sectionType: string) => {
     const alertMessage = 'ATENÇÃO! ESSE MÓDULO SERÁ LIBERADO NO DIA 01 DE AGOSTO DE 2025, ENQUANTO ISSO INICIE AS ATIVIDADES PELO MÓDULO 3 OU PELA BIBLIOTECA DE PERSONAGENS!';
 
@@ -19,19 +18,25 @@ const HomePage: React.FC = () => {
         navigate(`/modulo/${moduleId}`);
       }
     } else if (sectionType === 'howto') {
-      // ----> ESTA É A PARTE QUE FOI CORRIGIDA <----
-      // Agora, ele verifica se o módulo tem uma página antes de navegar
       if (moduleId > 6) {
         alert('ATENÇÃO! As aulas desse módulo ainda estão em gravação, mas estarão disponíveis em breve. Aproveite os outros módulos!');
       } else {
         navigate(`/como-desenhar/${moduleId}`);
       }
-      // ---------------------------------------------
     } else if (sectionType === 'bonus') {
-      if (moduleId === 1 || moduleId === 2) {
-        alert(alertMessage);
+      const clickedBonusModule = bonusModules.find(m => m.id === moduleId);
+
+      if (clickedBonusModule) {
+        if (clickedBonusModule.title === "Perspectiva") {
+          navigate('/bonus/perspectiva');
+        } else if (clickedBonusModule.title === "Gestual Avançado") {
+           // Mapeia para a página de desafios (verificar se a rota está correta para este bônus)
+          navigate('/bonus/desafios');
+        } else {
+          alert('Este módulo bônus ainda não está disponível ou não tem uma página dedicada.');
+        }
       } else {
-        alert('Este módulo bônus ainda não está disponível.');
+         alert('Módulo bônus não encontrado.');
       }
     }
   };
@@ -55,15 +60,17 @@ const HomePage: React.FC = () => {
 
       <section className="relative">
         <picture>
+          {/* ===== CORREÇÃO: Comentários removidos daqui ===== */}
           <source
             media="(max-width: 768px)"
-            srcSet="https://i.imgur.com/nkjNoNO.jpg"
+            srcSet="/images/cell.webp"
           />
           <img
-            src="https://i.imgur.com/ru9WoNh.jpg"
+            src="/images/pc.webp"
             alt="Banner Principal - Curso de Desenho"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
+          {/* =============================================== */}
         </picture>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
       </section>
@@ -110,7 +117,7 @@ const HomePage: React.FC = () => {
               ♠ SUPER BÔNUS ♠
             </span>
           </SectionTitle>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <ModuleCarousel
               modules={bonusModules}
               sectionType="bonus"
