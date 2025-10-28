@@ -1,0 +1,146 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, Play } from 'lucide-react';
+import BackButton from './BackButton';
+
+// Interface para o componente de item de aula
+interface LessonItemProps {
+  lessonNumber: string;
+  title: string;
+  thumbnailUrl: string;
+  onClick: () => void;
+}
+
+const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
+  return (
+    <div 
+      className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
+      onClick={onClick}
+    >
+      <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
+        <img 
+          src={thumbnailUrl} 
+          alt={`Aula ${lessonNumber}`}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300">
+          <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
+        </div>
+      </div>
+      
+      <div className="ml-4 flex-grow">
+        <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
+          {lessonNumber}: {title}
+        </h3>
+        <p className="text-gray-400 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          Clique para assistir à aula
+        </p>
+      </div>
+
+      <div className="flex-shrink-0 ml-4">
+        <ArrowLeft className="w-5 h-5 text-gray-600 group-hover:text-purple-400 rotate-180 group-hover:translate-x-1 transition-all duration-300" />
+      </div>
+    </div>
+  );
+};
+
+const HowToDraw3Page: React.FC = () => {
+  const navigate = useNavigate();
+
+  // ATUALIZADO: Lista de aulas do Módulo 3 da Seção 2 com os novos títulos
+  const lessons = [
+    { number: "01", title: "Marge Simpson", thumbnailUrl: "https://i.postimg.cc/0QFjZdC4/001.jpg" },
+    { number: "02", title: "Bart Simpson", thumbnailUrl: "https://i.postimg.cc/9X9ZKrq9/002.jpg" },
+    { number: "03", title: "Homer Simpson", thumbnailUrl: "https://i.postimg.cc/prKjF6tC/003.jpg" },
+    { number: "04", title: "Lisa Simpson", thumbnailUrl: "https://i.postimg.cc/pXtzHRD6/004.png" },
+    { number: "05", title: "Flanders", thumbnailUrl: "https://i.postimg.cc/FR71jn0c/005.jpg" },
+    { number: "06", title: "Milhouse Van Houten", thumbnailUrl: "https://i.postimg.cc/zfwyzg8b/006.jpg" },
+    { number: "07", title: "Chefe Wiggum", thumbnailUrl: "https://i.postimg.cc/zGFL5hJL/007.png" },
+    { number: "08", title: "Krusty o Palhaço", thumbnailUrl: "https://i.postimg.cc/xTHJx7h3/008.png" },
+    { number: "09", title: "Montgomery Burns", thumbnailUrl: "https://i.postimg.cc/BvJqCwfb/009.png" },
+    { number: "10", title: "Nelson Muntz", thumbnailUrl: "https://i.postimg.cc/850NNpJf/010.png" },
+    { number: "11", title: "Lisa Simpson", thumbnailUrl: "https://i.postimg.cc/vZF84ZPW/011.png" },
+    { number: "12", title: "Bart Simpson", thumbnailUrl: "https://i.postimg.cc/gJSkjy5J/012.png" },
+    { number: "13", title: "Robert Terwilliger", thumbnailUrl: "https://i.postimg.cc/yNCJCP4C/013.png" },
+    { number: "14", title: "Abraham Simpson II", thumbnailUrl: "https://i.postimg.cc/MTWvvpps/014.png" },
+    { number: "15", title: "Zelador Willie", thumbnailUrl: "https://i.postimg.cc/BQyLM3m6/015.png" }
+  ];
+
+  const handleBackClick = () => {
+    navigate('/home');
+  };
+
+  const handleLessonClick = (lessonNumber: string) => {
+    navigate(`/como-desenhar/3/aula/${lessonNumber}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-black">
+      <div className="container mx-auto px-4 pt-6">
+        <BackButton onClick={handleBackClick} text="Ver todos os módulos" />
+      </div>
+
+      <section className="relative mt-6">
+        <picture>
+          <source 
+            media="(max-width: 768px)" 
+            srcSet="https://i.postimg.cc/FKVfZFnf/3-B.png"
+          />
+          <img 
+            src="https://i.postimg.cc/Y0hhM62g/3-A.png"
+            alt="Banner Módulo 3 - Como Desenhar"
+            className="w-full h-[40vh] md:h-[60vh] object-cover"
+          />
+        </picture>
+        
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
+          <div className="container mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
+              MÓDULO 03
+            </h1>
+            <h2 className="text-xl md:text-2xl text-gray-300 font-medium">
+              Como Desenhar Os Simpsons
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-16 max-w-7xl">
+        <div className="mb-8 px-4 md:px-8">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Aulas
+          </h3>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
+          <p className="text-gray-400 mt-4">
+            Clique em qualquer aula para começar a assistir
+          </p>
+        </div>
+
+        <div className="space-y-4 px-4 md:px-8">
+          {lessons.map((lesson, index) => (
+            <LessonItem
+              key={index}
+              lessonNumber={lesson.number}
+              title={lesson.title}
+              thumbnailUrl={lesson.thumbnailUrl}
+              onClick={() => handleLessonClick(lesson.number)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <footer className="bg-gray-900 text-white py-12 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Módulo 03 - Como Desenhar Os Simpsons
+          </h3>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Aprenda a desenhar os personagens icónicos de Springfield com o estilo característico da série.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default HowToDraw3Page;
