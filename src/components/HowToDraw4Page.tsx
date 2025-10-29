@@ -7,19 +7,19 @@ import BackButton from './BackButton';
 interface LessonItemProps {
   lessonNumber: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Caminho da miniatura local
   onClick: () => void;
 }
 
 const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
   return (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
-        <img 
-          src={thumbnailUrl} 
+        <img
+          src={thumbnailUrl} // Usará o caminho local
           alt={`Aula ${lessonNumber}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -27,7 +27,7 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
           <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
         </div>
       </div>
-      
+
       <div className="ml-4 flex-grow">
         <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
           {lessonNumber}: {title}
@@ -47,23 +47,23 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
 const HowToDraw4Page: React.FC = () => {
   const navigate = useNavigate();
 
-  // ATUALIZADO: Lista de aulas do Módulo 4 da Seção 2 com os novos títulos
+  // ATUALIZADO: Lista de aulas do Módulo 4 da Seção 2 com miniaturas locais
   const lessons = [
-    { number: "01", title: "Boruto Uzumaki", thumbnailUrl: "https://i.postimg.cc/Z55xNwBF/001.png" },
-    { number: "02", title: "Uchiha Sarada", thumbnailUrl: "https://i.postimg.cc/nhSYGqq8/002.png" },
-    { number: "03", title: "Mitsuki", thumbnailUrl: "https://i.postimg.cc/7LC1sbN5/003.png" },
-    { number: "04", title: "Kawaki", thumbnailUrl: "https://i.postimg.cc/rm0hrQHY/004.png" },
-    { number: "05", title: "Shikadai Nara", thumbnailUrl: "https://i.postimg.cc/hG3yvH2d/005.png" },
-    { number: "06", title: "Uchiha Sasuke", thumbnailUrl: "https://i.postimg.cc/d00NqqjF/006.png" },
-    { number: "07", title: "Metal Lee", thumbnailUrl: "https://i.postimg.cc/K8fsSKLQ/007.png" },
-    { number: "08", title: "Gaara (Kazekage)", thumbnailUrl: "https://i.postimg.cc/zXnc72Gs/008.png" },
-    { number: "09", title: "Himawari Uzumaki", thumbnailUrl: "https://i.postimg.cc/vZbSN71c/009.png" },
-    { number: "10", title: "Boruto Uzumaki²", thumbnailUrl: "https://i.postimg.cc/pV57hLbX/010.png" },
-    { number: "11", title: "Shikamaru", thumbnailUrl: "https://i.postimg.cc/L6dWzF2k/011.png" },
-    { number: "12", title: "Chocho Akimichi", thumbnailUrl: "https://i.postimg.cc/63yPh98c/012.png" },
-    { number: "13", title: "Inojin Yamanaka", thumbnailUrl: "https://i.postimg.cc/FR8BW2c4/013.png" },
-    { number: "14", title: "Sumire Kakei", thumbnailUrl: "https://i.postimg.cc/ZnND1VFy/014.png" },
-    { number: "15", title: "Suzumeno Namida", thumbnailUrl: "https://i.postimg.cc/wBWPJtj3/015.png" }
+    { number: "01", title: "Boruto Uzumaki", thumbnailUrl: "/images/s2/4_1.webp" }, // Atualizado
+    { number: "02", title: "Uchiha Sarada", thumbnailUrl: "/images/s2/4_2.webp" }, // Atualizado
+    { number: "03", title: "Mitsuki", thumbnailUrl: "/images/s2/4_3.webp" }, // Atualizado
+    { number: "04", title: "Kawaki", thumbnailUrl: "/images/s2/4_4.webp" }, // Atualizado
+    { number: "05", title: "Shikadai Nara", thumbnailUrl: "/images/s2/4_5.webp" }, // Atualizado
+    { number: "06", title: "Uchiha Sasuke", thumbnailUrl: "/images/s2/4_6.webp" }, // Atualizado
+    { number: "07", title: "Metal Lee", thumbnailUrl: "/images/s2/4_7.webp" }, // Atualizado
+    { number: "08", title: "Gaara (Kazekage)", thumbnailUrl: "/images/s2/4_8.webp" }, // Atualizado
+    { number: "09", title: "Himawari Uzumaki", thumbnailUrl: "/images/s2/4_9.webp" }, // Atualizado
+    { number: "10", title: "Boruto Uzumaki²", thumbnailUrl: "/images/s2/4_10.webp" }, // Atualizado
+    { number: "11", title: "Shikamaru", thumbnailUrl: "/images/s2/4_11.webp" }, // Atualizado
+    { number: "12", title: "Chocho Akimichi", thumbnailUrl: "/images/s2/4_12.webp" }, // Atualizado
+    { number: "13", title: "Inojin Yamanaka", thumbnailUrl: "/images/s2/4_13.webp" }, // Atualizado
+    { number: "14", title: "Sumire Kakei", thumbnailUrl: "/images/s2/4_14.webp" }, // Atualizado
+    { number: "15", title: "Suzumeno Namida", thumbnailUrl: "/images/s2/4_15.webp" } // Atualizado
   ];
 
   const handleBackClick = () => {
@@ -80,19 +80,21 @@ const HowToDraw4Page: React.FC = () => {
         <BackButton onClick={handleBackClick} text="Ver todos os módulos" />
       </div>
 
+      {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative mt-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/NFSLMKLn/4-B.png"
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/s2/capa4_cell.webp" // Banner celular atualizado
           />
-          <img 
-            src="https://i.postimg.cc/9FwrkYnH/4-A.png"
+          <img
+            src="/images/s2/capa4_pc.webp" // Banner PC atualizado
             alt="Banner Módulo 4 - Como Desenhar"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
         </picture>
-        
+      {/* ==================================== */}
+
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
@@ -122,7 +124,7 @@ const HowToDraw4Page: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={lesson.thumbnailUrl}
+              thumbnailUrl={lesson.thumbnailUrl} // Passando o caminho local
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}

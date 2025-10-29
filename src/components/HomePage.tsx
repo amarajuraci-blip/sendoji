@@ -1,25 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react'; // Importe useState
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 import ModuleCarousel from './ModuleCarousel';
 import { courseModules, howToDrawModules, bonusModules } from '../data/modules';
+import ComingSoonModal from './ComingSoonModal'; // Importe o novo modal
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  // Estados para controlar o modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const handleModuleClick = (moduleId: number, sectionType: string) => {
-    const alertMessage = 'ATENÇÃO! ESSE MÓDULO SERÁ LIBERADO NO DIA 01 DE AGOSTO DE 2025, ENQUANTO ISSO INICIE AS ATIVIDADES PELO MÓDULO 3 OU PELA BIBLIOTECA DE PERSONAGENS!';
+    // Defina a mensagem específica para os módulos 1 e 2 da seção 'course'
+    const courseAlertMessage = 'ATENÇÃO! ESSE MÓDULO SERÁ LIBERADO NO DIA 01 DE JANEIRO DE 2026, ENQUANTO ISSO INICIE AS ATIVIDADES PELO MÓDULO 3 OU PELA BIBLIOTECA DE PERSONAGENS!';
+    const howToDrawAlertMessage = 'ATENÇÃO! As aulas desse módulo ainda estão em gravação, mas estarão disponíveis em breve. Aproveite os outros módulos!';
+    const bonusAlertMessage = 'Este módulo bônus ainda não está disponível ou não tem uma página dedicada.'; // Mensagem genérica para bônus futuros
 
     if (sectionType === 'course') {
       if (moduleId === 1 || moduleId === 2) {
-        alert(alertMessage);
+        // Define a mensagem e abre o modal em vez de usar alert()
+        setModalMessage(courseAlertMessage);
+        setIsModalOpen(true);
       } else {
         navigate(`/modulo/${moduleId}`);
       }
     } else if (sectionType === 'howto') {
       if (moduleId > 6) {
-        alert('ATENÇÃO! As aulas desse módulo ainda estão em gravação, mas estarão disponíveis em breve. Aproveite os outros módulos!');
+        // Você pode usar o modal aqui também se quiser
+        alert(howToDrawAlertMessage); // Mantendo o alert por enquanto, mas pode mudar
+        // Para usar o modal:
+        // setModalMessage(howToDrawAlertMessage);
+        // setIsModalOpen(true);
       } else {
         navigate(`/como-desenhar/${moduleId}`);
       }
@@ -30,13 +43,14 @@ const HomePage: React.FC = () => {
         if (clickedBonusModule.title === "Perspectiva") {
           navigate('/bonus/perspectiva');
         } else if (clickedBonusModule.title === "Gestual Avançado") {
-           // Mapeia para a página de desafios (verificar se a rota está correta para este bônus)
           navigate('/bonus/desafios');
         } else {
-          alert('Este módulo bônus ainda não está disponível ou não tem uma página dedicada.');
+          // Usa o modal para módulos bônus indisponíveis
+          setModalMessage(bonusAlertMessage);
+          setIsModalOpen(true);
         }
       } else {
-         alert('Módulo bônus não encontrado.');
+         alert('Módulo bônus não encontrado.'); // Ou usar o modal
       }
     }
   };
@@ -46,8 +60,15 @@ const HomePage: React.FC = () => {
     navigate('/', { replace: true });
   };
 
+  // Função para fechar o modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalMessage(''); // Limpa a mensagem ao fechar
+  };
+
   return (
     <div className="min-h-screen bg-black pb-20">
+      {/* Botão de Logout */}
       <div className="absolute top-4 right-4 z-50">
         <button
           onClick={handleLogout}
@@ -58,9 +79,9 @@ const HomePage: React.FC = () => {
         </button>
       </div>
 
+      {/* Banner Principal */}
       <section className="relative">
         <picture>
-          {/* ===== CORREÇÃO: Comentários removidos daqui ===== */}
           <source
             media="(max-width: 768px)"
             srcSet="/images/cell.webp"
@@ -70,12 +91,13 @@ const HomePage: React.FC = () => {
             alt="Banner Principal - Curso de Desenho"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
-          {/* =============================================== */}
         </picture>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
       </section>
 
+      {/* Conteúdo Principal */}
       <div className="container mx-auto px-4 py-16 max-w-7xl">
+        {/* Seção Curso de Desenho */}
         <section className="mb-20">
           <SectionTitle>
             <span className="md:hidden">
@@ -92,6 +114,7 @@ const HomePage: React.FC = () => {
           />
         </section>
 
+        {/* Seção Como Desenhar */}
         <section className="mb-20">
           <SectionTitle>
             <span className="md:hidden">
@@ -108,6 +131,7 @@ const HomePage: React.FC = () => {
           />
         </section>
 
+        {/* Seção Super Bônus */}
         <section className="mb-20">
           <SectionTitle>
             <span className="md:hidden">
@@ -127,6 +151,7 @@ const HomePage: React.FC = () => {
         </section>
       </div>
 
+      {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4 text-center">
           <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -138,6 +163,13 @@ const HomePage: React.FC = () => {
           </p>
         </div>
       </footer>
+
+      {/* Renderiza o Modal Condicionalmente */}
+      <ComingSoonModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        message={modalMessage}
+      />
     </div>
   );
 };

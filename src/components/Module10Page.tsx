@@ -7,19 +7,19 @@ import BackButton from './BackButton';
 interface LessonItemProps {
   lessonNumber: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Caminho da miniatura local
   onClick: () => void;
 }
 
 const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
   return (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
-        <img 
-          src={thumbnailUrl} 
+        <img
+          src={thumbnailUrl} // Usará o caminho local
           alt={`Aula ${lessonNumber}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -27,7 +27,7 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
           <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
         </div>
       </div>
-      
+
       <div className="ml-4 flex-grow">
         <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
           {lessonNumber}: {title}
@@ -47,16 +47,16 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
 const Module10Page: React.FC = () => {
   const navigate = useNavigate();
 
-  // ATUALIZADO: Lista de aulas do Módulo 10 com os novos títulos
+  // ATUALIZADO: Lista de aulas do Módulo 10 com miniaturas locais
   const lessons = [
-    { number: "01", title: "Corpo Frontal Masculino", thumbnailUrl: "https://i.postimg.cc/tgZ9cz6h/1.png" },
-    { number: "02", title: "Corpo Frontal Feminino", thumbnailUrl: "https://i.postimg.cc/k4WqJXfG/2.png" },
-    { number: "03", title: "Corpo de Perfil ( 2 género)", thumbnailUrl: "https://i.postimg.cc/QdnXSzF8/3.png" },
-    { number: "04", title: "Corpo de 3/4\" ( 2 género)", thumbnailUrl: "https://i.postimg.cc/tgK9GVd8/4.png" },
-    { number: "05", title: "Corpo de Costa ( 2 género)", thumbnailUrl: "https://i.postimg.cc/hvrnmZFq/5.png" },
-    { number: "06", title: "Treino de Altura - PARTE 01", thumbnailUrl: "https://i.postimg.cc/qq00zV5L/6.png" },
-    { number: "07", title: "Treino de Altura - PARTE 02", thumbnailUrl: "https://i.postimg.cc/BZc4Rbjw/7.png" },
-    { number: "08", title: "Treino de Altura - PARTE 03", thumbnailUrl: "https://i.postimg.cc/tCqpbbPR/8.png" }
+    { number: "01", title: "Corpo Frontal Masculino", thumbnailUrl: "/images/mod/10_1.webp" }, // Atualizado
+    { number: "02", title: "Corpo Frontal Feminino", thumbnailUrl: "/images/mod/10_2.webp" }, // Atualizado
+    { number: "03", title: "Corpo de Perfil ( 2 género)", thumbnailUrl: "/images/mod/10_3.webp" }, // Atualizado
+    { number: "04", title: "Corpo de 3/4\" ( 2 género)", thumbnailUrl: "/images/mod/10_4.webp" }, // Atualizado
+    { number: "05", title: "Corpo de Costa ( 2 género)", thumbnailUrl: "/images/mod/10_5.webp" }, // Atualizado
+    { number: "06", title: "Treino de Altura - PARTE 01", thumbnailUrl: "/images/mod/10_6.webp" }, // Atualizado
+    { number: "07", title: "Treino de Altura - PARTE 02", thumbnailUrl: "/images/mod/10_7.webp" }, // Atualizado
+    { number: "08", title: "Treino de Altura - PARTE 03", thumbnailUrl: "/images/mod/10_8.webp" } // Atualizado
   ];
 
   const handleBackClick = () => {
@@ -73,19 +73,21 @@ const Module10Page: React.FC = () => {
         <BackButton onClick={handleBackClick} text="Ver todos os módulos" />
       </div>
 
+      {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative mt-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/zB4xFkQX/10-B.png"
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/mod/capa10_cell.webp" // Banner celular atualizado
           />
-          <img 
-            src="https://i.postimg.cc/hvxpydF8/10-A.png"
+          <img
+            src="/images/mod/capa10_pc.webp" // Banner PC atualizado
             alt="Banner Módulo 10"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
         </picture>
-        
+      {/* ==================================== */}
+
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
@@ -115,7 +117,7 @@ const Module10Page: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={lesson.thumbnailUrl}
+              thumbnailUrl={lesson.thumbnailUrl} // Passando o caminho local
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}

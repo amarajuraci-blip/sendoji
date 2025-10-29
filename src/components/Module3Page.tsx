@@ -6,19 +6,19 @@ import { ArrowLeft, Play } from 'lucide-react';
 interface LessonItemProps {
   lessonNumber: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Caminho da miniatura local
   onClick: () => void;
 }
 
 const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
   return (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
-        <img 
-          src={thumbnailUrl} 
+        <img
+          src={thumbnailUrl} // Usará o caminho local passado
           alt={`Aula ${lessonNumber}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -26,7 +26,7 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
           <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
         </div>
       </div>
-      
+
       <div className="ml-4 flex-grow">
         <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
           {lessonNumber}: {title}
@@ -46,15 +46,15 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
 const Module3Page: React.FC = () => {
   const navigate = useNavigate();
 
-  // ATUALIZADO: Lista de aulas do Módulo 3 com os novos títulos
+  // ATUALIZADO: Lista de aulas do Módulo 3 com miniaturas locais
   const lessons = [
-    { number: "01", title: "Começando do ZERO!", thumbnailUrl: "https://i.postimg.cc/QNw4hkv6/01.png" },
-    { number: "02", title: "Treino dos Polígonos!", thumbnailUrl: "https://i.postimg.cc/t4HBVRqW/02.png" },
-    { number: "03", title: "Coração & Árvore", thumbnailUrl: "https://i.postimg.cc/XNpHRD1G/03.png" },
-    { number: "04", title: "Polígono de Pássaros", thumbnailUrl: "https://i.postimg.cc/8sgsz6mF/04.png" },
-    { number: "05", title: "Polígono de Répteis", thumbnailUrl: "https://i.postimg.cc/02StQKs9/05.png" },
-    { number: "06", title: "Polígono de Aracnídeo", thumbnailUrl: "https://i.postimg.cc/pLYqQNr7/06.png" },
-    { number: "07", title: "Polígono de Face Humana", thumbnailUrl: "https://i.postimg.cc/PqXK268q/07.png" }
+    { number: "01", title: "Começando do ZERO!", thumbnailUrl: "/images/mod/3_1.webp" }, // Atualizado
+    { number: "02", title: "Treino dos Polígonos!", thumbnailUrl: "/images/mod/3_2.webp" }, // Atualizado
+    { number: "03", title: "Coração & Árvore", thumbnailUrl: "/images/mod/3_3.webp" }, // Atualizado
+    { number: "04", title: "Polígono de Pássaros", thumbnailUrl: "/images/mod/3_4.webp" }, // Atualizado
+    { number: "05", title: "Polígono de Répteis", thumbnailUrl: "/images/mod/3_5.webp" }, // Atualizado
+    { number: "06", title: "Polígono de Aracnídeo", thumbnailUrl: "/images/mod/3_6.webp" }, // Atualizado
+    { number: "07", title: "Polígono de Face Humana", thumbnailUrl: "/images/mod/3_7.webp" } // Atualizado
   ];
 
   const handleBackClick = () => {
@@ -68,7 +68,7 @@ const Module3Page: React.FC = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="container mx-auto px-4 pt-6">
-        <button 
+        <button
           onClick={handleBackClick}
           className="flex items-center text-white hover:text-red-500 transition-colors duration-300 text-lg group"
         >
@@ -77,19 +77,21 @@ const Module3Page: React.FC = () => {
         </button>
       </div>
 
+      {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative mt-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/ncDkp7Pq/03-B.png" 
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/mod/capa3_cell.webp" // Banner celular atualizado
           />
-          <img 
-            src="https://i.postimg.cc/43Jb60N1/03-A.png" 
+          <img
+            src="/images/mod/capa3_pc.webp" // Banner PC atualizado
             alt="Banner Módulo 3"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
         </picture>
-        
+        {/* ==================================== */}
+
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
@@ -119,7 +121,7 @@ const Module3Page: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={lesson.thumbnailUrl}
+              thumbnailUrl={lesson.thumbnailUrl} // Passando o caminho local
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}
@@ -132,7 +134,7 @@ const Module3Page: React.FC = () => {
             Módulo 03 - Primeiros Traços
           </h3>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Desenvolva a coordenação motora e aprenda a controlar o lápis. 
+            Desenvolva a coordenação motora e aprenda a controlar o lápis.
             Pratique os primeiros traços que serão a base de todos os seus desenhos futuros.
           </p>
         </div>

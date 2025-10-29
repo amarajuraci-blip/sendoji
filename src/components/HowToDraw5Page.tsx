@@ -7,19 +7,19 @@ import BackButton from './BackButton';
 interface LessonItemProps {
   lessonNumber: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Caminho da miniatura local
   onClick: () => void;
 }
 
 const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
   return (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
-        <img 
-          src={thumbnailUrl} 
+        <img
+          src={thumbnailUrl} // Usará o caminho local
           alt={`Aula ${lessonNumber}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -27,7 +27,7 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
           <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
         </div>
       </div>
-      
+
       <div className="ml-4 flex-grow">
         <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
           {lessonNumber}: {title}
@@ -47,23 +47,23 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
 const HowToDraw5Page: React.FC = () => {
   const navigate = useNavigate();
 
-  // ATUALIZADO: Lista de aulas do Módulo 5 da Seção 2 com os novos títulos
+  // ATUALIZADO: Lista de aulas do Módulo 5 da Seção 2 com miniaturas locais
   const lessons = [
-    { number: "01", title: "Goku", thumbnailUrl: "https://i.postimg.cc/rFFV24RY/001.png" },
-    { number: "02", title: "Gohan Kid", thumbnailUrl: "https://i.postimg.cc/VsFfhgvC/002.png" },
-    { number: "03", title: "Tenchihan", thumbnailUrl: "https://i.postimg.cc/rsgqtV3J/003.png" },
-    { number: "04", title: "Vegeta", thumbnailUrl: "https://i.postimg.cc/3N3KR4SN/004.png" },
-    { number: "05", title: "Kaioshin do Leste", thumbnailUrl: "https://i.postimg.cc/wvXqgckn/005.png" },
-    { number: "06", title: "Goku com bastão", thumbnailUrl: "https://i.postimg.cc/1thmkYDp/006.png" },
-    { number: "07", title: "Freeza", thumbnailUrl: "https://i.postimg.cc/pdnV1t5W/007.png" },
-    { number: "08", title: "Ginyu", thumbnailUrl: "https://i.postimg.cc/jS2SPfsJ/008.png" },
-    { number: "09", title: "Dodoria", thumbnailUrl: "https://i.postimg.cc/BnzQgv67/009.png" },
-    { number: "10", title: "Gohan²", thumbnailUrl: "https://i.postimg.cc/nc0LX2tJ/010.png" },
-    { number: "11", title: "Android Nº17", thumbnailUrl: "https://i.postimg.cc/L6HX47wD/011.png" },
-    { number: "12", title: "Android N°18", thumbnailUrl: "https://i.postimg.cc/zvNfgPBJ/012.png" },
-    { number: "13", title: "Gotenks SSJ", thumbnailUrl: "https://i.postimg.cc/66VqXwjT/013.png" },
-    { number: "14", title: "Majin Boo", thumbnailUrl: "https://i.postimg.cc/d39VmmkG/014.png" },
-    { number: "15", title: "Goku SSJ", thumbnailUrl: "https://i.postimg.cc/tTWT7H9S/015.png" }
+    { number: "01", title: "Goku", thumbnailUrl: "/images/s2/5_1.webp" }, // Atualizado
+    { number: "02", title: "Gohan Kid", thumbnailUrl: "/images/s2/5_2.webp" }, // Atualizado
+    { number: "03", title: "Tenchihan", thumbnailUrl: "/images/s2/5_3.webp" }, // Atualizado
+    { number: "04", title: "Vegeta", thumbnailUrl: "/images/s2/5_4.webp" }, // Atualizado
+    { number: "05", title: "Kaioshin do Leste", thumbnailUrl: "/images/s2/5_5.webp" }, // Atualizado
+    { number: "06", title: "Goku com bastão", thumbnailUrl: "/images/s2/5_6.webp" }, // Atualizado
+    { number: "07", title: "Freeza", thumbnailUrl: "/images/s2/5_7.webp" }, // Atualizado
+    { number: "08", title: "Ginyu", thumbnailUrl: "/images/s2/5_8.webp" }, // Atualizado
+    { number: "09", title: "Dodoria", thumbnailUrl: "/images/s2/5_9.webp" }, // Atualizado
+    { number: "10", title: "Gohan²", thumbnailUrl: "/images/s2/5_10.webp" }, // Atualizado
+    { number: "11", title: "Android Nº17", thumbnailUrl: "/images/s2/5_11.webp" }, // Atualizado
+    { number: "12", title: "Android N°18", thumbnailUrl: "/images/s2/5_12.webp" }, // Atualizado
+    { number: "13", title: "Gotenks SSJ", thumbnailUrl: "/images/s2/5_13.webp" }, // Atualizado
+    { number: "14", title: "Majin Boo", thumbnailUrl: "/images/s2/5_14.webp" }, // Atualizado
+    { number: "15", title: "Goku SSJ", thumbnailUrl: "/images/s2/5_15.webp" } // Atualizado
   ];
 
   const handleBackClick = () => {
@@ -80,19 +80,21 @@ const HowToDraw5Page: React.FC = () => {
         <BackButton onClick={handleBackClick} text="Ver todos os módulos" />
       </div>
 
+      {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative mt-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/NGzKbzbx/5-B.png"
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/s2/capa5_cell.webp" // Banner celular atualizado
           />
-          <img 
-            src="https://i.postimg.cc/Jzbtr48T/5-A.png"
+          <img
+            src="/images/s2/capa5_pc.webp" // Banner PC atualizado
             alt="Banner Módulo 5 - Como Desenhar"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
         </picture>
-        
+      {/* ==================================== */}
+
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
@@ -122,7 +124,7 @@ const HowToDraw5Page: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={lesson.thumbnailUrl}
+              thumbnailUrl={lesson.thumbnailUrl} // Passando o caminho local
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}

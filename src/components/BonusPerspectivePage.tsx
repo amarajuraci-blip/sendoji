@@ -7,8 +7,9 @@ import ModuleCarousel from './ModuleCarousel';
 const BonusPerspectivePage: React.FC = () => {
   const navigate = useNavigate();
 
+  // REMOVIDO: Módulo de Introdução (id: 0)
   const perspectiveModules = [
-    { id: 0, title: "Introdução", imageUrl: "https://i.postimg.cc/sgckNLZx/ChatGPT_Image_22_06_2025,_21_02_53.png" },
+    // { id: 0, title: "Introdução", imageUrl: "https://i.postimg.cc/sgckNLZx/ChatGPT_Image_22_06_2025,_21_02_53.png" }, // <--- REMOVIDO
     { id: 1, title: "Perspectiva com 1 Ponto", imageUrl: "https://i.postimg.cc/ZqnMD5Ss/ChatGPT_Image_22_06_2025,_21_26_57.png" },
     { id: 2, title: "Perspectiva com 2 Pontos", imageUrl: "https://i.postimg.cc/QxpGpC8p/ChatGPT_Image_22_06_2025,_21_24_33.png" },
     { id: 3, title: "Perspectiva com 3 Pontos", imageUrl: "https://i.postimg.cc/hGtkW09r/ChatGPT_Image_22_06_2025,_21_25_19.png" },
@@ -20,17 +21,18 @@ const BonusPerspectivePage: React.FC = () => {
   };
 
   const handleModuleClick = (moduleId: number) => {
-    if (moduleId === 0) {
-      navigate(`/bonus/perspectiva/${moduleId}`);
-    } else {
-      alert('Atenção! As aulas desse módulo estão em gravação, aproveite para fazer todo curso de desenho.');
-    }
+    // ATUALIZADO: Como o ID 0 foi removido, a lógica anterior que permitia a navegação para ele
+    // não é mais necessária. Mantemos o alerta para os módulos restantes.
+    alert('Atenção! As aulas desse módulo estão em gravação, aproveite para fazer todo curso de desenho.');
+    // Se, no futuro, algum desses módulos (1, 2, 3, 4) tiver aulas prontas,
+    // a lógica de navegação precisará ser ajustada aqui. Ex:
+    // if (moduleId === 1) { navigate(`/bonus/perspectiva/${moduleId}`); } else { alert(...) }
   };
 
   return (
     <div className="min-h-screen bg-black">
       <div className="container mx-auto px-4 pt-6">
-        <button 
+        <button
           onClick={handleBackClick}
           className="flex items-center text-white hover:text-purple-400 transition-colors duration-300 text-lg group"
         >
@@ -39,15 +41,14 @@ const BonusPerspectivePage: React.FC = () => {
         </button>
       </div>
 
-      {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative my-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/3w1RGSdm/7-B.png" // Versão para telemóvel
+          <source
+            media="(max-width: 768px)"
+            srcSet="https://i.postimg.cc/3w1RGSdm/7-B.png"
           />
-          <img 
-            src="https://i.postimg.cc/5yYNZfpS/8-A.png" // Versão para PC
+          <img
+            src="https://i.postimg.cc/5yYNZfpS/8-A.png"
             alt="Banner - Curso de Perspectiva"
             className="w-full h-[40vh] md:h-[50vh] object-cover"
           />
@@ -60,8 +61,8 @@ const BonusPerspectivePage: React.FC = () => {
           <SectionTitle>
             <span className="text-yellow-400">♦</span> CURSO DE PERSPECTIVA <span className="text-yellow-400">♦</span>
           </SectionTitle>
-          <ModuleCarousel 
-            modules={perspectiveModules} 
+          <ModuleCarousel
+            modules={perspectiveModules}
             sectionType="bonus"
             onModuleClick={handleModuleClick}
           />

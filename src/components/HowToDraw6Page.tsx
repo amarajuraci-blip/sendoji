@@ -1,24 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Play } from 'lucide-react';
+import BackButton from './BackButton'; // Certifique-se que o BackButton está importado
 
 // Interface para o componente de item de aula
 interface LessonItemProps {
   lessonNumber: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Caminho da miniatura local
   onClick: () => void;
 }
 
 const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
   return (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
-        <img 
-          src={thumbnailUrl} 
+        <img
+          src={thumbnailUrl} // Usará o caminho local
           alt={`Aula ${lessonNumber}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -26,7 +27,7 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
           <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
         </div>
       </div>
-      
+
       <div className="ml-4 flex-grow">
         <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
           {lessonNumber}: {title}
@@ -46,14 +47,15 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
 const HowToDraw6Page: React.FC = () => {
   const navigate = useNavigate();
 
+  // ATUALIZADO: Lista de aulas do Módulo 6 da Seção 2 com miniaturas locais
   const lessons = [
-    { number: "01", title: "Monkey D. Luffy", thumbnailUrl: "https://i.postimg.cc/6q4h8q8s/Monkey-D-Luff-Chibi.png" },
-    { number: "02", title: "Zoro", thumbnailUrl: "https://i.postimg.cc/XNZMfgFW/Zoro.png" },
-    { number: "03", title: "Nami", thumbnailUrl: "https://i.postimg.cc/W4S8KxBy/Nami.png" },
-    { number: "04", title: "Usopp", thumbnailUrl: "https://i.postimg.cc/8554VtDz/Usopp.png" },
-    { number: "05", title: "Sanji", thumbnailUrl: "https://i.postimg.cc/XYfQKrQ4/Sanji.png" },
-    { number: "06", title: "Nico Robin", thumbnailUrl: "https://i.postimg.cc/7LqXKqW7/Nico_Robin.png" },
-    { number: "07", title: "Chopper", thumbnailUrl: "https://i.postimg.cc/qR5LByMX/Chopper.png" }
+    { number: "01", title: "Monkey D. Luffy", thumbnailUrl: "/images/s2/6_1.webp" }, // Atualizado
+    { number: "02", title: "Zoro", thumbnailUrl: "/images/s2/6_2.webp" }, // Atualizado
+    { number: "03", title: "Nami", thumbnailUrl: "/images/s2/6_3.webp" }, // Atualizado
+    { number: "04", title: "Usopp", thumbnailUrl: "/images/s2/6_4.webp" }, // Atualizado
+    { number: "05", title: "Sanji", thumbnailUrl: "/images/s2/6_5.webp" }, // Atualizado
+    { number: "06", title: "Nico Robin", thumbnailUrl: "/images/s2/6_6.webp" }, // Atualizado
+    { number: "07", title: "Chopper", thumbnailUrl: "/images/s2/6_7.webp" } // Atualizado
   ];
 
   const handleBackClick = () => {
@@ -67,29 +69,25 @@ const HowToDraw6Page: React.FC = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="container mx-auto px-4 pt-6">
-        <button 
-          onClick={handleBackClick}
-          className="flex items-center text-white hover:text-purple-400 transition-colors duration-300 text-lg group"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
-          Ver todos os módulos
-        </button>
+        {/* Inclui o BackButton */}
+        <BackButton onClick={handleBackClick} text="Ver todos os módulos" />
       </div>
 
       {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative mt-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/dVMLcZbk/6-B.png" // Versão para telemóvel
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/s2/capa6_cell.webp" // Banner celular atualizado
           />
-          <img 
-            src="https://i.postimg.cc/6QtqyJ5B/6-A.png" // Versão para PC
+          <img
+            src="/images/s2/capa6_pc.webp" // Banner PC atualizado
             alt="Banner Módulo 6 - Como Desenhar"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
         </picture>
-        
+      {/* ==================================== */}
+
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
@@ -119,7 +117,7 @@ const HowToDraw6Page: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={lesson.thumbnailUrl}
+              thumbnailUrl={lesson.thumbnailUrl} // Passando o caminho local
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}

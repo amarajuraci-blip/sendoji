@@ -7,19 +7,19 @@ import BackButton from './BackButton';
 interface LessonItemProps {
   lessonNumber: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Caminho da miniatura local
   onClick: () => void;
 }
 
 const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
   return (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
-        <img 
-          src={thumbnailUrl} 
+        <img
+          src={thumbnailUrl} // Usará o caminho local
           alt={`Aula ${lessonNumber}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -27,7 +27,7 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
           <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
         </div>
       </div>
-      
+
       <div className="ml-4 flex-grow">
         <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
           {lessonNumber}: {title}
@@ -47,28 +47,28 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
 const HowToDraw1Page: React.FC = () => {
   const navigate = useNavigate();
 
-  // ATUALIZADO: Lista de aulas com os novos nomes
+  // ATUALIZADO: Lista de aulas com miniaturas locais
   const lessons = [
-    { number: "01", title: "Aladdin", thumbnailUrl: "https://i.postimg.cc/bvfK0GbR/001.png" },
-    { number: "02", title: "Alice", thumbnailUrl: "https://i.postimg.cc/Z5dGyP9R/002.png" },
-    { number: "03", title: "Anna", thumbnailUrl: "https://i.postimg.cc/wTZKv4jZ/003.png" },
-    { number: "04", title: "Ariel", thumbnailUrl: "https://i.postimg.cc/CLzTwpSb/004.png" },
-    { number: "05", title: "Branca de Neve", thumbnailUrl: "https://i.postimg.cc/NGNvhjqg/005.png" },
-    { number: "06", title: "Cinderela", thumbnailUrl: "https://i.postimg.cc/4y2DpBbK/006.png" },
-    { number: "07", title: "Hercules", thumbnailUrl: "https://i.postimg.cc/qq7ft9nV/007.png" },
-    { number: "08", title: "Jasmine", thumbnailUrl: "https://i.postimg.cc/Tw0M3RKJ/008.png" },
-    { number: "09", title: "Li Shang", thumbnailUrl: "https://i.postimg.cc/Xvw6tK3h/009.png" },
-    { number: "10", title: "Margarida", thumbnailUrl: "https://i.postimg.cc/V6mPwSkN/010.png" },
-    { number: "11", title: "Mickey Mouse", thumbnailUrl: "https://i.postimg.cc/6QsNHbsn/011.png" },
-    { number: "12", title: "Minnie Mouse", thumbnailUrl: "https://i.postimg.cc/t4njNQc9/012.png" },
-    { number: "13", title: "Mulan", thumbnailUrl: "https://i.postimg.cc/fTrsdTBH/013.png" },
-    { number: "14", title: "Pateta", thumbnailUrl: "https://i.postimg.cc/Y28MpxgB/014.png" },
-    { number: "15", title: "Pato Donald", thumbnailUrl: "https://i.postimg.cc/7Y6DbTMG/015.png" },
-    { number: "16", title: "Peter Pan", thumbnailUrl: "https://i.postimg.cc/Y0276v5P/016.png" },
-    { number: "17", title: "Pluto", thumbnailUrl: "https://i.postimg.cc/nzJpLR0p/017.png" },
-    { number: "18", title: "Pocahontas", thumbnailUrl: "https://i.postimg.cc/ZRxZv8M3/018.png" },
-    { number: "19", title: "Rapunzel", thumbnailUrl: "https://i.postimg.cc/pr0Hq2xL/019.png" },
-    { number: "20", title: "Tio Patinhas", thumbnailUrl: "https://i.postimg.cc/PqZdTsbS/020.png" }
+    { number: "01", title: "Aladdin", thumbnailUrl: "/images/s2/1_1.webp" }, // Atualizado
+    { number: "02", title: "Alice", thumbnailUrl: "/images/s2/1_2.webp" }, // Atualizado
+    { number: "03", title: "Anna", thumbnailUrl: "/images/s2/1_3.webp" }, // Atualizado
+    { number: "04", title: "Ariel", thumbnailUrl: "/images/s2/1_4.webp" }, // Atualizado
+    { number: "05", title: "Branca de Neve", thumbnailUrl: "/images/s2/1_5.webp" }, // Atualizado
+    { number: "06", title: "Cinderela", thumbnailUrl: "/images/s2/1_6.webp" }, // Atualizado
+    { number: "07", title: "Hercules", thumbnailUrl: "/images/s2/1_8.webp" }, // Atualizado
+    { number: "08", title: "Jasmine", thumbnailUrl: "/images/s2/1_7.webp" }, // Atualizado
+    { number: "09", title: "Li Shang", thumbnailUrl: "/images/s2/1_9.webp" }, // Atualizado
+    { number: "10", title: "Margarida", thumbnailUrl: "/images/s2/1_10.webp" }, // Atualizado
+    { number: "11", title: "Mickey Mouse", thumbnailUrl: "/images/s2/1_11.webp" }, // Atualizado
+    { number: "12", title: "Minnie Mouse", thumbnailUrl: "/images/s2/1_12.webp" }, // Atualizado
+    { number: "13", title: "Mulan", thumbnailUrl: "/images/s2/1_13.webp" }, // Atualizado
+    { number: "14", title: "Pateta", thumbnailUrl: "/images/s2/1_14.webp" }, // Atualizado
+    { number: "15", title: "Pato Donald", thumbnailUrl: "/images/s2/1_15.webp" }, // Atualizado
+    { number: "16", title: "Peter Pan", thumbnailUrl: "/images/s2/1_16.webp" }, // Atualizado
+    { number: "17", title: "Pluto", thumbnailUrl: "/images/s2/1_17.webp" }, // Atualizado
+    { number: "18", title: "Pocahontas", thumbnailUrl: "/images/s2/1_18.webp" }, // Atualizado
+    { number: "19", title: "Rapunzel", thumbnailUrl: "/images/s2/1_19.webp" }, // Atualizado
+    { number: "20", title: "Tio Patinhas", thumbnailUrl: "/images/s2/1_20.webp" } // Atualizado
   ];
 
   const handleBackClick = () => {
@@ -85,19 +85,21 @@ const HowToDraw1Page: React.FC = () => {
         <BackButton onClick={handleBackClick} text="Ver todos os módulos" />
       </div>
 
+      {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative mt-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/qvn6Nxsx/1-B.png"
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/s2/capa1_cell.webp" // Banner celular atualizado
           />
-          <img 
-            src="https://i.postimg.cc/qRBNZf91/1-A.png"
+          <img
+            src="/images/s2/capa1_pc.webp" // Banner PC atualizado
             alt="Banner Módulo 1 - Como Desenhar"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
         </picture>
-        
+      {/* ==================================== */}
+
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
@@ -127,7 +129,7 @@ const HowToDraw1Page: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={lesson.thumbnailUrl}
+              thumbnailUrl={lesson.thumbnailUrl} // Passando o caminho local
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}

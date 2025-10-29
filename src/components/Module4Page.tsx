@@ -7,19 +7,19 @@ import BackButton from './BackButton';
 interface LessonItemProps {
   lessonNumber: string;
   title: string;
-  thumbnailUrl: string;
+  thumbnailUrl: string; // Caminho da miniatura local
   onClick: () => void;
 }
 
 const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailUrl, onClick }) => {
   return (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
       <div className="flex-shrink-0 w-24 h-16 md:w-32 md:h-20 rounded-lg overflow-hidden relative">
-        <img 
-          src={thumbnailUrl} 
+        <img
+          src={thumbnailUrl} // Usará o caminho local
           alt={`Aula ${lessonNumber}`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -27,7 +27,7 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
           <Play className="w-6 h-6 md:w-8 md:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
         </div>
       </div>
-      
+
       <div className="ml-4 flex-grow">
         <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
           {lessonNumber}: {title}
@@ -47,18 +47,18 @@ const LessonItem: React.FC<LessonItemProps> = ({ lessonNumber, title, thumbnailU
 const Module4Page: React.FC = () => {
   const navigate = useNavigate();
 
-  // ATUALIZADO: Lista de aulas do Módulo 4 com os novos títulos
+  // ATUALIZADO: Lista de aulas do Módulo 4 com miniaturas locais
   const lessons = [
-    { number: "01", title: "Os primeiros Esboços", thumbnailUrl: "https://i.postimg.cc/63zkM2Qk/1.png" },
-    { number: "02", title: "Esboço de Desenhos Simples", thumbnailUrl: "https://i.postimg.cc/k4nrNF7N/2.png" },
-    { number: "03", title: "Vaca da leite & Abelha da mel", thumbnailUrl: "https://i.postimg.cc/j25GmxwL/3.png" },
-    { number: "04", title: "Simplificando um Pato", thumbnailUrl: "https://i.postimg.cc/R015nbxV/4.png" },
-    { number: "05", title: "Simplificando uma Coruja", thumbnailUrl: "https://i.postimg.cc/RhDjzkKG/5.png" },
-    { number: "06", title: "Simplificando um Golfinho", thumbnailUrl: "https://i.postimg.cc/FFCtcL8c/6.png" },
-    { number: "07", title: "Simplificando um Cachorro", thumbnailUrl: "https://i.postimg.cc/RVWkT0xY/7.png" },
-    { number: "08", title: "Simplificando uma Vaca", thumbnailUrl: "https://i.postimg.cc/dtgzNKqV/8.png" },
-    { number: "09", title: "Simplificando um Porco", thumbnailUrl: "https://i.postimg.cc/Z53X1DRF/9.png" },
-    { number: "10", title: "Simplificando um Gatinho", thumbnailUrl: "https://i.postimg.cc/JhLSmcHw/10.png" }
+    { number: "01", title: "Os primeiros Esboços", thumbnailUrl: "/images/mod/4_1.webp" }, // Atualizado
+    { number: "02", title: "Esboço de Desenhos Simples", thumbnailUrl: "/images/mod/4_2.webp" }, // Atualizado
+    { number: "03", title: "Vaca da leite & Abelha da mel", thumbnailUrl: "/images/mod/4_3.webp" }, // Atualizado
+    { number: "04", title: "Simplificando um Pato", thumbnailUrl: "/images/mod/4_4.webp" }, // Atualizado
+    { number: "05", title: "Simplificando uma Coruja", thumbnailUrl: "/images/mod/4_5.webp" }, // Atualizado
+    { number: "06", title: "Simplificando um Golfinho", thumbnailUrl: "/images/mod/4_6.webp" }, // Atualizado
+    { number: "07", title: "Simplificando um Cachorro", thumbnailUrl: "/images/mod/4_7.webp" }, // Atualizado
+    { number: "08", title: "Simplificando uma Vaca", thumbnailUrl: "/images/mod/4_8.webp" }, // Atualizado
+    { number: "09", title: "Simplificando um Porco", thumbnailUrl: "/images/mod/4_9.webp" }, // Atualizado
+    { number: "10", title: "Simplificando um Gatinho", thumbnailUrl: "/images/mod/4_10.webp" } // Atualizado
   ];
 
   const handleBackClick = () => {
@@ -75,19 +75,21 @@ const Module4Page: React.FC = () => {
         <BackButton onClick={handleBackClick} text="Ver todos os módulos" />
       </div>
 
+      {/* ===== BANNER ATUALIZADO AQUI ===== */}
       <section className="relative mt-6">
         <picture>
-          <source 
-            media="(max-width: 768px)" 
-            srcSet="https://i.postimg.cc/5tn5nmXW/04-B.png"
+          <source
+            media="(max-width: 768px)"
+            srcSet="/images/mod/capa4_cell.webp" // Banner celular atualizado
           />
-          <img 
-            src="https://i.postimg.cc/Px7Wkrb6/04-A.png" 
+          <img
+            src="/images/mod/capa4_pc.webp" // Banner PC atualizado
             alt="Banner Módulo 4"
             className="w-full h-[40vh] md:h-[60vh] object-cover"
           />
         </picture>
-        
+      {/* ==================================== */}
+
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
@@ -117,7 +119,7 @@ const Module4Page: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={lesson.thumbnailUrl}
+              thumbnailUrl={lesson.thumbnailUrl} // Passando o caminho local
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}
