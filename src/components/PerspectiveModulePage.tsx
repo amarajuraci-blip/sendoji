@@ -1,11 +1,14 @@
+// src/components/PerspectiveModulePage.tsx
+
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Play } from 'lucide-react';
-import SectionTitle from './SectionTitle';
+import SectionTitle from './SectionTitle'; // Certifique-se que SectionTitle está importado
+import BackButton from './BackButton';     // Importe BackButton se ainda não estiver
 
 // Componente para um item de aula
 const LessonItem: React.FC<{ lessonNumber: string; title: string; thumbnailUrl: string; onClick: () => void; }> = ({ lessonNumber, title, thumbnailUrl, onClick }) => (
-    <div 
+    <div
       className="flex items-center bg-gray-900 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-300 cursor-pointer group"
       onClick={onClick}
     >
@@ -25,37 +28,41 @@ const LessonItem: React.FC<{ lessonNumber: string; title: string; thumbnailUrl: 
     </div>
 );
 
-const perspectiveModulesData: Record<string, { title: string; lessons: { number: string; title: string }[] }> = {
+// Dados dos módulos com thumbnails adicionadas ao módulo 1
+const perspectiveModulesData: Record<string, { title: string; lessons: { number: string; title: string; thumbnailUrl: string }[] }> = {
     '1': {
         title: "Perspectiva com 1 Ponto",
         lessons: [
-            { number: "01", title: "Introdução ao Ponto de Fuga Único" },
-            { number: "02", title: "Desenhando Formas Básicas" },
-            { number: "03", title: "Criando um Cenário Simples" },
+            // *** THUMBNAILS ADICIONADAS AQUI ***
+            { number: "01", title: "Introdução ao Ponto de Fuga Único", thumbnailUrl: "/images/bonus/b1_01.webp" },
+            { number: "02", title: "Desenhando Formas Básicas", thumbnailUrl: "/images/bonus/b1_02.webp" },
+            { number: "03", title: "Criando um Cenário Simples", thumbnailUrl: "/images/bonus/b1_03.webp" },
+            // { number: "04", title: "Aula Extra", thumbnailUrl: "/images/bonus/b1_04.webp" }, // Exemplo se houvesse aula 4
         ]
     },
     '2': {
         title: "Perspectiva com 2 Pontos",
+        // Adicione thumbnailUrl aqui se tiver imagens para o módulo 2
         lessons: [
-            { number: "01", title: "Entendendo os Dois Pontos de Fuga" },
-            { number: "02", title: "Desenhando Edifícios e Objetos" },
-            { number: "03", title: "Composição com Múltiplos Elementos" },
+            { number: "01", title: "Entendendo os Dois Pontos de Fuga", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" }, // Usando placeholder por enquanto
+            { number: "02", title: "Desenhando Edifícios e Objetos", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
+            { number: "03", title: "Composição com Múltiplos Elementos", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
         ]
     },
     '3': {
         title: "Perspectiva com 3 Pontos",
         lessons: [
-            { number: "01", title: "O Ponto de Fuga Vertical" },
-            { number: "02", title: "Vista de Cima (Plongée)" },
-            { number: "03", title: "Vista de Baixo (Contra-Plongée)" },
+            { number: "01", title: "O Ponto de Fuga Vertical", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
+            { number: "02", title: "Vista de Cima (Plongée)", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
+            { number: "03", title: "Vista de Baixo (Contra-Plongée)", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
         ]
     },
     '4': {
         title: "Perspectiva com 5 Pontos",
         lessons: [
-            { number: "01", title: "Introdução à Perspectiva Curvilínea" },
-            { number: "02", title: "Criando o Efeito 'Olho de Peixe'" },
-            { number: "03", title: "Aplicações Criativas e Panorâmicas" },
+            { number: "01", title: "Introdução à Perspectiva Curvilínea", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
+            { number: "02", title: "Criando o Efeito 'Olho de Peixe'", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
+            { number: "03", title: "Aplicações Criativas e Panorâmicas", thumbnailUrl: "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png" },
         ]
     },
 };
@@ -66,16 +73,17 @@ const PerspectiveModulePage: React.FC = () => {
 
   const moduleData = moduleId ? perspectiveModulesData[moduleId] : null;
 
-  const thumbnailUrl = "https://i.postimg.cc/x81TSBRW/course-thumbnails-6c2c410a-c367-4393-a809-ecf48394060c-385b63aa70734a378d78de5a2cec6523.png";
-
   const handleBackClick = () => {
     navigate('/bonus/perspectiva');
   };
 
   const handleLessonClick = (lessonNumber: string) => {
-    navigate(`/bonus/perspectiva/${moduleId}/aula/${lessonNumber}`);
+    // Alerta que as aulas estão em gravação
+    alert('Atenção! As aulas desse módulo estão em gravação, aproveite para fazer todo curso de desenho.');
+    // Navegação comentada por enquanto
+    // navigate(`/bonus/perspectiva/${moduleId}/aula/${lessonNumber}`);
   };
-  
+
   if (!moduleData) {
     return <div className="min-h-screen bg-black text-white text-center pt-20">Módulo de perspectiva não encontrado.</div>;
   }
@@ -83,19 +91,15 @@ const PerspectiveModulePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="container mx-auto px-4 pt-6">
-        <button 
-          onClick={handleBackClick}
-          className="flex items-center text-white hover:text-purple-400 transition-colors duration-300 text-lg group"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
-          Voltar para o curso de perspectiva
-        </button>
+        {/* Usando BackButton importado */}
+        <BackButton onClick={handleBackClick} text="Voltar para o curso de perspectiva" />
       </div>
 
       <section className="relative mt-6">
+        {/* *** BANNER ATUALIZADO AQUI *** */}
         <picture>
-          <source media="(max-width: 768px)" srcSet="https://i.postimg.cc/0jX55ZXr/PROVISORIO-1.png" />
-          <img src="https://i.postimg.cc/MKXK32XB/PROVISORIO.png" alt={`Banner Módulo ${moduleId}`} className="w-full h-[40vh] md:h-[60vh] object-cover" />
+          <source media="(max-width: 768px)" srcSet="/images/bonus/capa1b_webp" />
+          <img src="/images/bonus/capa1b_webp" alt={`Banner Módulo ${moduleId}`} className="w-full h-[40vh] md:h-[60vh] object-cover" />
         </picture>
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8">
           <div className="container mx-auto">
@@ -107,6 +111,7 @@ const PerspectiveModulePage: React.FC = () => {
 
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         <div className="mb-8 px-4 md:px-8">
+          {/* Usando SectionTitle importado */}
           <SectionTitle>Aulas</SectionTitle>
           <p className="text-gray-400 mt-4">Clique em qualquer aula para começar a assistir.</p>
         </div>
@@ -116,7 +121,8 @@ const PerspectiveModulePage: React.FC = () => {
               key={index}
               lessonNumber={lesson.number}
               title={lesson.title}
-              thumbnailUrl={thumbnailUrl}
+              // *** Passando a thumbnailUrl específica da lição ***
+              thumbnailUrl={lesson.thumbnailUrl}
               onClick={() => handleLessonClick(lesson.number)}
             />
           ))}

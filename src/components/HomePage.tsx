@@ -1,3 +1,5 @@
+// src/components/HomePage.tsx
+
 import React, { useState } from 'react'; // Importe useState
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
@@ -13,14 +15,13 @@ const HomePage: React.FC = () => {
   const [modalMessage, setModalMessage] = useState('');
 
   const handleModuleClick = (moduleId: number, sectionType: string) => {
-    // Defina a mensagem específica para os módulos 1 e 2 da seção 'course'
+    // Mensagens definidas
     const courseAlertMessage = 'ATENÇÃO! ESSE MÓDULO SERÁ LIBERADO NO DIA 01 DE JANEIRO DE 2026, ENQUANTO ISSO INICIE AS ATIVIDADES PELO MÓDULO 3 OU PELA BIBLIOTECA DE PERSONAGENS!';
-    const howToDrawAlertMessage = 'ATENÇÃO! As aulas desse módulo ainda estão em gravação, mas estarão disponíveis em breve. Aproveite os outros módulos!';
-    const bonusAlertMessage = 'Este módulo bônus ainda não está disponível ou não tem uma página dedicada.'; // Mensagem genérica para bônus futuros
+    const howToDrawAlertMessage = '⚠️ ATENÇÃO!\nAs aulas desse módulo ainda estão em gravação, mas estarão disponíveis em breve.\nEnquanto isso, sinta-se à vontade para revisitar lições anteriores ou avançar. Aproveite os outros módulos!';
+    // const bonusAlertMessage = 'Este módulo bônus ainda não está disponível ou não tem uma página dedicada.'; // Não será mais usada diretamente aqui
 
     if (sectionType === 'course') {
       if (moduleId === 1 || moduleId === 2) {
-        // Define a mensagem e abre o modal em vez de usar alert()
         setModalMessage(courseAlertMessage);
         setIsModalOpen(true);
       } else {
@@ -28,30 +29,33 @@ const HomePage: React.FC = () => {
       }
     } else if (sectionType === 'howto') {
       if (moduleId > 6) {
-        // Você pode usar o modal aqui também se quiser
-        alert(howToDrawAlertMessage); // Mantendo o alert por enquanto, mas pode mudar
-        // Para usar o modal:
-        // setModalMessage(howToDrawAlertMessage);
-        // setIsModalOpen(true);
+        setModalMessage(howToDrawAlertMessage);
+        setIsModalOpen(true);
       } else {
         navigate(`/como-desenhar/${moduleId}`);
       }
     } else if (sectionType === 'bonus') {
-      const clickedBonusModule = bonusModules.find(m => m.id === moduleId);
+      // *** LÓGICA ATUALIZADA AQUI ***
+      // Sempre mostrar a mensagem dos módulos 1 e 2 para QUALQUER módulo bônus
+      setModalMessage(courseAlertMessage);
+      setIsModalOpen(true);
 
+      // A lógica antiga para navegar para páginas específicas de bônus foi removida/comentada,
+      // pois agora sempre exibimos o modal.
+      /*
+      const clickedBonusModule = bonusModules.find(m => m.id === moduleId);
       if (clickedBonusModule) {
         if (clickedBonusModule.title === "Perspectiva") {
-          navigate('/bonus/perspectiva');
+          // navigate('/bonus/perspectiva'); // Não navega mais
         } else if (clickedBonusModule.title === "Gestual Avançado") {
-          navigate('/bonus/desafios');
+          // navigate('/bonus/desafios'); // Não navega mais
         } else {
-          // Usa o modal para módulos bônus indisponíveis
-          setModalMessage(bonusAlertMessage);
-          setIsModalOpen(true);
+          // setModalMessage(bonusAlertMessage); // Usa a courseAlertMessage agora
         }
       } else {
-         alert('Módulo bônus não encontrado.'); // Ou usar o modal
+         // setModalMessage('Módulo bônus não encontrado.'); // Usa a courseAlertMessage agora
       }
+      */
     }
   };
 
@@ -145,7 +149,7 @@ const HomePage: React.FC = () => {
             <ModuleCarousel
               modules={bonusModules}
               sectionType="bonus"
-              onModuleClick={(moduleId) => handleModuleClick(moduleId, 'bonus')}
+              onModuleClick={(moduleId) => handleModuleClick(moduleId, 'bonus')} // A lógica interna agora sempre mostra o modal
             />
           </div>
         </section>

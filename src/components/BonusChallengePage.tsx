@@ -1,87 +1,92 @@
+// src/components/BonusChallengePage.tsx
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 import ModuleCarousel from './ModuleCarousel';
+import BackButton from './BackButton'; // Importe BackButton
 
 const BonusChallengePage: React.FC = () => {
   const navigate = useNavigate();
 
-  // Array original para referência interna e navegação
+  // Array original com THUMBNAILS ATUALIZADAS para b2
   const originalChallengeModules = [
-    // { id: 1, title: 'Desafio 01', imageUrl: 'https://i.postimg.cc/Kj3zZyhZ/7.png' }, // REMOVIDO
-    { id: 2, title: 'Desafio 02', imageUrl: 'https://i.postimg.cc/nLTM2k1t/2.png' },
-    { id: 3, title: 'Desafio 03', imageUrl: 'https://i.postimg.cc/VNzdXTnR/1.png' },
-    { id: 4, title: 'Desafio 04', imageUrl: 'https://i.postimg.cc/x1vXJYJ8/3.png' },
-    { id: 5, title: 'Desafio 05', imageUrl: 'https://i.postimg.cc/rwXdwzp7/4.png' },
-    { id: 6, title: 'Desafio 06', imageUrl: 'https://i.postimg.cc/pTTr6F05/5.png' }
+    // { id: 1, title: 'Desafio 01 Original', imageUrl: '/images/bonus/b1_01.webp' }, // REMOVIDO na lógica anterior
+    // *** THUMBNAILS ATUALIZADAS AQUI ***
+    { id: 2, title: 'Aula 01', imageUrl: '/images/s2/b2_1.webp' }, // Corresponde ao Desafio 02 original
+    { id: 3, title: 'Aula 02', imageUrl: '/images/s2/b2_2.webp' }, // Corresponde ao Desafio 03 original
+    { id: 4, title: 'Aula 03', imageUrl: '/images/s2/b2_3.webp' }, // Corresponde ao Desafio 04 original
+    { id: 5, title: 'Aula 04', imageUrl: '/images/s2/b2_4.webp' }, // Corresponde ao Desafio 05 original
+    { id: 6, title: 'Aula 05', imageUrl: '/images/s2/b2_5.webp' }  // Corresponde ao Desafio 06 original
   ];
 
-  // Mapeia para exibição com IDs e títulos reenumerados
+  // Mapeia para exibição (o título pode ser ajustado se necessário)
+  // Usaremos o título original ("Aula 01", etc.) definido acima no ModuleCard
   const displayChallengeModules = originalChallengeModules.map((module, index) => ({
-    ...module, // Mantém a imageUrl e o ID original para navegação
-    displayId: index + 1, // Novo ID sequencial para exibição (não usado diretamente no Card, mas útil para clareza)
-    title: `Desafio ${String(index + 1).padStart(2, '0')}`, // Título reenumerado
+    ...module,
+    // Se quiser que o título no card seja "Desafio XX", descomente a linha abaixo
+    // title: `Desafio ${String(index + 1).padStart(2, '0')}`,
   }));
-
 
   const handleBackClick = () => {
     navigate('/home');
   };
 
-  // ATENÇÃO: A função agora recebe o ID ORIGINAL do módulo clicado
   const handleModuleClick = (originalModuleId: number) => {
-    // A lógica do alerta usa o ID ORIGINAL
-    // Os desafios originais 2 e 3 (agora exibidos como 1 e 2) são <= 3.
-    // O desafio original 4 (agora exibido como 3) também é <= 4, mas a lógica original era <=3, vamos manter.
-    // Isso significa que os desafios exibidos como 1 e 2 funcionarão, os outros mostrarão alerta.
-    if (originalModuleId <= 3) { // Usa o ID original (2 ou 3 funcionam)
+    // A lógica de alerta usa o ID ORIGINAL
+    // Os desafios originais 2 e 3 (agora aulas 1 e 2) são <= 3 e funcionam.
+    if (originalModuleId <= 3) {
       navigate(`/bonus/desafios/${originalModuleId}`); // Navega com o ID original
     } else {
       alert('Atenção! As aulas desse módulo estão em gravação, aproveite para fazer todo curso de desenho.');
     }
   };
 
-
   return (
-    <div className="min-h-screen bg-black pb-24"> {/* Adicionado padding-bottom */}
+    <div className="min-h-screen bg-black pb-24">
       <div className="container mx-auto px-4 pt-6">
-        <button
-          onClick={handleBackClick}
-          className="flex items-center text-white hover:text-purple-400 transition-colors duration-300 text-lg group"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
-          Voltar para a página inicial
-        </button>
+        {/* Usando BackButton importado */}
+        <BackButton onClick={handleBackClick} text="Voltar para a página inicial" />
       </div>
 
       <section className="relative my-6">
+        {/* *** BANNER ATUALIZADO AQUI *** */}
         <picture>
           <source
             media="(max-width: 768px)"
-            srcSet="https://i.postimg.cc/85nzK7dC/8-B.png"
+            srcSet="/images/s2/capa2b_cell.png" // Banner celular atualizado
           />
           <img
-            src="https://i.postimg.cc/85CCmR63/7-A.png"
-            alt="Banner - Desafios"
+            src="/images/s2/capa2b_pc.png" // Banner PC atualizado
+            alt="Banner - Gestual Avançado / Desafios"
             className="w-full h-[40vh] md:h-[50vh] object-cover"
           />
         </picture>
+        {/* Div adicionada para escurecer um pouco o banner e melhorar leitura do texto sobreposto se houver */}
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+         {/* Texto sobreposto ao Banner (opcional, exemplo) */}
+         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-8">
+          <div className="container mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
+              BÔNUS 02
+            </h1>
+            <h2 className="text-xl md:text-2xl text-gray-300 font-medium">
+              Gestual Avançado / Desafios
+            </h2>
+          </div>
+        </div>
       </section>
 
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <section>
+          {/* Título da seção pode ser ajustado */}
           <SectionTitle>
-            <span className="text-cyan-400">♦</span> DESAFIOS DE DESENHO <span className="text-cyan-400">♦</span>
+            <span className="text-cyan-400">♦</span> Aulas / Desafios <span className="text-cyan-400">♦</span>
           </SectionTitle>
           <ModuleCarousel
-            // Passa os módulos com títulos atualizados para exibição
-            modules={displayChallengeModules.map(m => ({
-                id: m.id, // ID original para o clique
-                title: m.title, // Título reenumerado
-                imageUrl: m.imageUrl
-            }))}
+            // Passa os módulos com TÍTULOS E IMAGENS atualizados para exibição
+            modules={displayChallengeModules} // Já contém title e imageUrl corretos
             sectionType="bonus"
             // Passa o ID ORIGINAL para a função handleModuleClick
             onModuleClick={handleModuleClick}
@@ -92,10 +97,10 @@ const BonusChallengePage: React.FC = () => {
       <footer className="bg-gray-900 text-white py-12 mt-16">
         <div className="container mx-auto px-4 text-center">
           <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Bônus: Desafios de Desenho
+            Bônus: Gestual Avançado / Desafios
           </h3>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Teste suas habilidades e evolua sua técnica com desafios práticos e divertidos.
+            Teste suas habilidades e evolua sua técnica com desafios práticos e divertidos focados no gestual.
           </p>
         </div>
       </footer>
