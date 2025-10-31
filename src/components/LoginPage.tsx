@@ -1,28 +1,36 @@
+// amarajuraci-blip/sendoji/sendoji-5d31049582b4141029842a01bf9e35e78ed4a186/src/components/LoginPage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../supabaseClient'; // Importa o cliente Supabase
 
 const LoginPage: React.FC = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState(''); // Alterado de 'login' para 'email'
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
-    // Simulate a small delay for better UX
-    setTimeout(() => {
-      if (login === 'aluno_turma_07' && password === 'desenho2025') {
-        localStorage.setItem('isLoggedIn', 'true');
-        navigate('/home', { replace: true });
-      } else {
-        setError('Login ou senha incorretos');
-      }
-      setIsLoading(false);
-    }, 500);
+    // Lógica de login do Supabase
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      setError(error.message === 'Invalid login credentials' ? 'Email ou senha incorretos' : error.message);
+    } else {
+      // Se o login for bem-sucedido, o ProtectedRoute cuidará do redirecionamento
+      // com base no estado de autenticação.
+      // O Supabase salva a sessão automaticamente.
+      navigate('/home', { replace: true });
+    }
+    
+    setIsLoading(false);
   };
 
   return (
@@ -44,18 +52,18 @@ const LoginPage: React.FC = () => {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Login Field */}
+            {/* Email Field */}
             <div>
-              <label htmlFor="login" className="block text-sm font-medium text-gray-300 mb-2">
-                Login
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                Email
               </label>
               <input
-                type="text"
-                id="login"
-                value={login}
-                onChange={(e) => setLogin(e.target.value)}
+                type="email" // Alterado para 'email'
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                placeholder="Digite seu login"
+                placeholder="Digite seu email"
                 required
               />
             </div>

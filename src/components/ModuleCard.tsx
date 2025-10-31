@@ -1,3 +1,4 @@
+// amarajuraci-blip/sendoji/sendoji-5d31049582b4141029842a01bf9e35e78ed4a186/src/components/ModuleCard.tsx
 import React from 'react';
 
 interface ModuleCardProps {
@@ -26,6 +27,10 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
     return sectionType === 'bonus' ? 'border-4' : 'border-2';
   };
 
+  // Lógica para determinar se o card deve ser preto e branco
+  const isGrayscale = (sectionType === 'course' && (moduleNumber === 1 || moduleNumber === 2)) || 
+                        (sectionType === 'bonus');
+
   return (
     <div className="group cursor-pointer">
       <div className={`rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${getBorderWidth()} ${getAccentColor()} relative overflow-hidden`}>
@@ -33,7 +38,7 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
           <img 
             src={imageUrl} 
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ${isGrayscale ? 'grayscale' : ''}`} // <-- Classe 'grayscale' adicionada
           />
           
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 ease-in-out flex items-end">

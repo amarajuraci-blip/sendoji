@@ -1,3 +1,4 @@
+// amarajuraci-blip/sendoji/sendoji-5d31049582b4141029842a01bf9e35e78ed4a186/src/components/BottomNav.tsx
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Home, ShoppingCart, Instagram, Youtube } from 'lucide-react';
@@ -30,8 +31,11 @@ const BottomNav: React.FC = () => {
         <span className="text-xs font-medium">Início</span>
       </button>
 
-      {/* Botão Ofertas */}
-      <button onClick={() => navigate('/ofertas')} className={`flex flex-col items-center gap-1 transition-colors duration-200 ${getButtonClass('/ofertas')}`}>
+      {/* Botão Ofertas (Desativado) */}
+      <button 
+        disabled 
+        className="flex flex-col items-center gap-1 text-gray-400 opacity-50 cursor-not-allowed"
+      >
         <ShoppingCart className="w-6 h-6" />
         <span className="text-xs font-medium">Ofertas</span>
       </button>

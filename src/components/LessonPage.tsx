@@ -1,3 +1,4 @@
+// amarajuraci-blip/sendoji/sendoji-5d31049582b4141029842a01bf9e35e78ed4a186/src/components/LessonPage.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { ArrowLeft, Play, Download, MessageCircle, FileText, Maximize, ExternalLink } from 'lucide-react';
@@ -150,6 +151,10 @@ const LessonPage: React.FC = () => {
 
   // Função para verificar se deve mostrar comercial
   const checkShouldShowCommercial = () => {
+    // ===== COMERCIAL DESATIVADO TEMPORARIAMENTE =====
+    return false; 
+    // ================================================
+
     // Se não há comerciais na lista, não mostrar comercial
     if (COMMERCIALS_LIST.length === 0) {
       return false;

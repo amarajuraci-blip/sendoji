@@ -1,24 +1,21 @@
-// src/components/HomePage.tsx
-
-import React, { useState } from 'react'; // Importe useState
+// amarajuraci-blip/sendoji/sendoji-5d31049582b4141029842a01bf9e35e78ed4a186/src/components/HomePage.tsx
+import React, { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
 import SectionTitle from './SectionTitle';
 import ModuleCarousel from './ModuleCarousel';
 import { courseModules, howToDrawModules, bonusModules } from '../data/modules';
-import ComingSoonModal from './ComingSoonModal'; // Importe o novo modal
+import ComingSoonModal from './ComingSoonModal'; 
+import { supabase } from '../supabaseClient'; // 1. Importar o Supabase
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  // Estados para controlar o modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
   const handleModuleClick = (moduleId: number, sectionType: string) => {
-    // Mensagens definidas
     const courseAlertMessage = 'ATENÇÃO! ESSE MÓDULO SERÁ LIBERADO NO DIA 01 DE JANEIRO DE 2026, ENQUANTO ISSO INICIE AS ATIVIDADES PELO MÓDULO 3 OU PELA BIBLIOTECA DE PERSONAGENS!';
     const howToDrawAlertMessage = '⚠️ ATENÇÃO!\nAs aulas desse módulo ainda estão em gravação, mas estarão disponíveis em breve.\nEnquanto isso, sinta-se à vontade para revisitar lições anteriores ou avançar. Aproveite os outros módulos!';
-    // const bonusAlertMessage = 'Este módulo bônus ainda não está disponível ou não tem uma página dedicada.'; // Não será mais usada diretamente aqui
 
     if (sectionType === 'course') {
       if (moduleId === 1 || moduleId === 2) {
@@ -35,39 +32,27 @@ const HomePage: React.FC = () => {
         navigate(`/como-desenhar/${moduleId}`);
       }
     } else if (sectionType === 'bonus') {
-      // *** LÓGICA ATUALIZADA AQUI ***
       // Sempre mostrar a mensagem dos módulos 1 e 2 para QUALQUER módulo bônus
       setModalMessage(courseAlertMessage);
       setIsModalOpen(true);
-
-      // A lógica antiga para navegar para páginas específicas de bônus foi removida/comentada,
-      // pois agora sempre exibimos o modal.
-      /*
-      const clickedBonusModule = bonusModules.find(m => m.id === moduleId);
-      if (clickedBonusModule) {
-        if (clickedBonusModule.title === "Perspectiva") {
-          // navigate('/bonus/perspectiva'); // Não navega mais
-        } else if (clickedBonusModule.title === "Gestual Avançado") {
-          // navigate('/bonus/desafios'); // Não navega mais
-        } else {
-          // setModalMessage(bonusAlertMessage); // Usa a courseAlertMessage agora
-        }
-      } else {
-         // setModalMessage('Módulo bônus não encontrado.'); // Usa a courseAlertMessage agora
-      }
-      */
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    navigate('/', { replace: true });
+  // 2. Atualizar a função de Logout
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error('Erro ao fazer logout:', error);
+    } else {
+      // O onAuthStateChange no ProtectedRoute vai detectar o logout
+      // e redirecionar para a página de login automaticamente.
+      navigate('/', { replace: true });
+    }
   };
 
-  // Função para fechar o modal
   const closeModal = () => {
     setIsModalOpen(false);
-    setModalMessage(''); // Limpa a mensagem ao fechar
+    setModalMessage(''); 
   };
 
   return (
@@ -75,7 +60,7 @@ const HomePage: React.FC = () => {
       {/* Botão de Logout */}
       <div className="absolute top-4 right-4 z-50">
         <button
-          onClick={handleLogout}
+          onClick={handleLogout} // <--- Função atualizada
           className="flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition-colors duration-300 border border-gray-700 hover:border-gray-600"
         >
           <LogOut className="w-4 h-4" />
@@ -149,7 +134,7 @@ const HomePage: React.FC = () => {
             <ModuleCarousel
               modules={bonusModules}
               sectionType="bonus"
-              onModuleClick={(moduleId) => handleModuleClick(moduleId, 'bonus')} // A lógica interna agora sempre mostra o modal
+              onModuleClick={(moduleId) => handleModuleClick(moduleId, 'bonus')}
             />
           </div>
         </section>

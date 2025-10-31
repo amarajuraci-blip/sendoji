@@ -1,48 +1,48 @@
+// amarajuraci-blip/sendoji/sendoji-5d31049582b4141029842a01bf9e35e78ed4a186/src/components/ProtectedRoute.tsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import LoginPage from './LoginPage';
+import { supabase } from '../supabaseClient';
+import { Session, AuthChangeEvent } from '@supabase/supabase-js'; // Importa os tipos necessários
 
-interface ProtectedRouteProps {
-  children: React.ReactNode;
-}
-
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [session, setSession] = useState<Session | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    // Check authentication status on component mount
-    const checkAuth = () => {
-      const loginStatus = localStorage.getItem('isLoggedIn');
-      const isAuth = loginStatus === 'true';
-      setIsAuthenticated(isAuth);
-      
-      // If not authenticated and not on login page, redirect to login
-      if (!isAuth && location.pathname !== '/') {
+    // 1. Tenta pegar a sessão que já existe
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setLoading(false);
+
+      if (!session && location.pathname !== '/') {
         navigate('/', { replace: true });
       }
-    };
+    });
 
-    checkAuth();
-
-    // Listen for storage changes (useful for logout from other tabs)
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'isLoggedIn') {
-        const isAuth = e.newValue === 'true';
-        setIsAuthenticated(isAuth);
-        if (!isAuth) {
+    // 2. Ouve por mudanças na autenticação (login/logout)
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      // CORREÇÃO AQUI: Adiciona os tipos aos parâmetros
+      (_event: AuthChangeEvent, session: Session | null) => {
+        setSession(session);
+        setLoading(false);
+        
+        if (!session && location.pathname !== '/') {
           navigate('/', { replace: true });
         }
       }
-    };
+    );
 
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    // 3. Limpa o "ouvinte" quando o componente é desmontado
+    return () => {
+      authListener?.subscription.unsubscribe();
+    };
   }, [navigate, location.pathname]);
 
-  // Show loading state while checking authentication
-  if (isAuthenticated === null) {
+  // Exibe um loading enquanto a sessão está sendo verificada
+  if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-white text-xl">
@@ -53,12 +53,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
     );
   }
 
-  // Show login page if not authenticated
-  if (!isAuthenticated) {
+  // Se não há sessão (não está logado), mostra a página de login
+  if (!session) {
     return <LoginPage />;
   }
 
-  // Show protected content if authenticated
+  // Se há sessão (está logado), mostra o conteúdo protegido (o {children})
   return <>{children}</>;
 };
 
