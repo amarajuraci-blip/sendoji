@@ -34,9 +34,9 @@ const perspectiveModulesData: Record<string, { title: string; lessons: { number:
         title: "Perspectiva com 1 Ponto",
         lessons: [
             // *** THUMBNAILS ADICIONADAS AQUI ***
-            { number: "01", title: "Introdução ao Ponto de Fuga Único", thumbnailUrl: "/images/bonus/b1_01.webp" },
-            { number: "02", title: "Desenhando Formas Básicas", thumbnailUrl: "/images/bonus/b1_02.webp" },
-            { number: "03", title: "Criando um Cenário Simples", thumbnailUrl: "/images/bonus/b1_03.webp" },
+            { number: "01", title: "Introdução ao Ponto de Fuga Único", thumbnailUrl: "/images/s2/b1_01.webp" },
+            { number: "02", title: "Desenhando Formas Básicas", thumbnailUrl: "/images/s2/b1_02.webp" },
+            { number: "03", title: "Criando um Cenário Simples", thumbnailUrl: "/images/s2/b1_03.webp" },
             // { number: "04", title: "Aula Extra", thumbnailUrl: "/images/bonus/b1_04.webp" }, // Exemplo se houvesse aula 4
         ]
     },

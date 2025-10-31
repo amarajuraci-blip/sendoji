@@ -41,74 +41,74 @@ const LessonPage: React.FC = () => {
         '02': { title: 'Escolhendo as Ferramentas', videoId: 'kuTfOme0Cng' }
     },
     '3': {
-        '01': { title: 'Começando do ZERO!', videoId: 'Dv76zpw6aK0' },
-        '02': { title: 'Treino dos Polígonos!', videoId: 'xl_2MgijpP0', pdfUrl: 'https://drive.google.com/drive/folders/1c6vtceJANs4HqkW5SepDF_fIQogyV7DE?usp=drive_link' },
-        '03': { title: 'Coração & Árvore', videoId: 'mHaZxSiKfME', pdfUrl: 'https://drive.google.com/drive/folders/1B5ZkNEhRnyfm9QSUBr3OI_WzqmVy27sz?usp=drive_link' },
-        '04': { title: 'Polígono de Pássaros', videoId: 'dSFocDJNkBM', pdfUrl: 'https://drive.google.com/drive/folders/1Fh_NJXai66mZafiXNfgcQbQ-V-6JGCnN?usp=drive_link' },
-        '05': { title: 'Polígono de Répteis', videoId: 'wExGKYKj8pQ', pdfUrl: 'https://drive.google.com/drive/folders/10OpE1cF6uLP7C62VoJ4O-cp8d60_fBet?usp=drive_link' },
-        '06': { title: 'Polígono de Aracnídeo', videoId: 'c9Jw1FjEjGg', pdfUrl: 'https://drive.google.com/drive/folders/1YAah8-WflQCCcPzSyGNwzTuNelhcNpSa?usp=drive_link' },
-        '07': { title: 'Polígono de Face Humana', videoId: 'ZsSqWqg-ZnY', pdfUrl: 'https://drive.google.com/drive/folders/1N_5Y_hIQy05L_qjdwwyp9S_GTeNptIi8?usp=drive_link' }
+        '01': { title: 'Começando do ZERO!', videoId: 'QH2CO1GBS5Y' },
+        '02': { title: 'Treino dos Polígonos!', videoId: 'bQTgVxJigo4', pdfUrl: 'https://drive.google.com/drive/folders/1c6vtceJANs4HqkW5SepDF_fIQogyV7DE?usp=drive_link' },
+        '03': { title: 'Coração & Árvore', videoId: '3XPDAIy9MQ4', pdfUrl: 'https://drive.google.com/drive/folders/1B5ZkNEhRnyfm9QSUBr3OI_WzqmVy27sz?usp=drive_link' },
+        '04': { title: 'Polígono de Pássaros', videoId: 'LVeUqJqBRXU', pdfUrl: 'https://drive.google.com/drive/folders/1Fh_NJXai66mZafiXNfgcQbQ-V-6JGCnN?usp=drive_link' },
+        '05': { title: 'Polígono de Répteis', videoId: 'uK7dqTMxqic', pdfUrl: 'https://drive.google.com/drive/folders/10OpE1cF6uLP7C62VoJ4O-cp8d60_fBet?usp=drive_link' },
+        '06': { title: 'Polígono de Aracnídeo', videoId: 'n4Kc4jMxUnE', pdfUrl: 'https://drive.google.com/drive/folders/1YAah8-WflQCCcPzSyGNwzTuNelhcNpSa?usp=drive_link' },
+        '07': { title: 'Polígono de Face Humana', videoId: 'U_tmMonT-SI', pdfUrl: 'https://drive.google.com/drive/folders/1N_5Y_hIQy05L_qjdwwyp9S_GTeNptIi8?usp=drive_link' }
     },
     '4': {
-        '01': { title: 'Os primeiros Esboços', videoId: 'cq1y_Tm-8vc', pdfUrl: 'https://drive.google.com/drive/folders/1xhag0WYJ_YW4gU6RFmibQsyhUPadwlyR?usp=drive_link' },
-        '02': { title: 'Esboço de Desenhos Simples', videoId: 'aFA8xICgi84', pdfUrl: 'https://drive.google.com/drive/folders/1z9jtXGLLghqktJy_eEnLecUXKOVC6P2m?usp=drive_link' },
-        '03': { title: 'Vaca da leite & Abelha da mel', videoId: '9IHllrUFY9A', pdfUrl: 'https://drive.google.com/drive/folders/1sSI473CU64dDYm1F01lXDLErc-E5r_rm?usp=sharing' },
-        '04': { title: 'Simplificando um Pato', videoId: '8FkMA0gUmHw', pdfUrl: 'https://drive.google.com/drive/folders/1F6w0sMFpHqfCK7Qb5AhSON6AWuPOuf6T?usp=drive_link' },
-        '05': { title: 'Simplificando uma Coruja', videoId: 'GKYssiNIt1s', pdfUrl: 'https://drive.google.com/drive/folders/1h1833Cyf1zowQYfB1Y1EvQMiqpkItvyH?usp=drive_link' },
-        '06': { title: 'Simplificando um Golfinho', videoId: 'K8JgT0Pi1sk', pdfUrl: 'https://drive.google.com/drive/folders/1gsETFReidPZLdapUbwFCRxmBw6Z4YHX3?usp=drive_link' },
-        '07': { title: 'Simplificando um Cachorro', videoId: 'AtjoJnzKDUo', pdfUrl: 'https://drive.google.com/drive/folders/1N-MOcvy9gBpFEXXud9hHsSLkJceU5rs7?usp=drive_link' },
-        '08': { title: 'Simplificando uma Vaca', videoId: 'loWG68t9dDA', pdfUrl: 'https://drive.google.com/drive/folders/1EeEb7yx_77U5jBllhFIRsGRHr7ACBtzn?usp=drive_link' },
-        '09': { title: 'Simplificando um Porco', videoId: 'xFQ24argX1c', pdfUrl: 'https://drive.google.com/drive/folders/1bqJ_uf5Rhb8MwMCeciof1eL0i5a1QvUm?usp=drive_link' },
-        '10': { title: 'Simplificando um Gatinho', videoId: 'XKH0psJobKw', pdfUrl: 'https://drive.google.com/drive/folders/1XQflS3pOLkF_Dbi9eMqx-0zK1bXIpG-s?usp=drive_link' }
+        '01': { title: 'Os primeiros Esboços', videoId: 'H4K9jfnW23U', pdfUrl: 'https://drive.google.com/drive/folders/1xhag0WYJ_YW4gU6RFmibQsyhUPadwlyR?usp=drive_link' },
+        '02': { title: 'Esboço de Desenhos Simples', videoId: 'kOwHguqn6kI', pdfUrl: 'https://drive.google.com/drive/folders/1z9jtXGLLghqktJy_eEnLecUXKOVC6P2m?usp=drive_link' },
+        '03': { title: 'Vaca da leite & Abelha da mel', videoId: 'UIBGCSwbB0A', pdfUrl: 'https://drive.google.com/drive/folders/1sSI473CU64dDYm1F01lXDLErc-E5r_rm?usp=sharing' },
+        '04': { title: 'Simplificando um Pato', videoId: '37hGJhCJcJc', pdfUrl: 'https://drive.google.com/drive/folders/1F6w0sMFpHqfCK7Qb5AhSON6AWuPOuf6T?usp=drive_link' },
+        '05': { title: 'Simplificando uma Coruja', videoId: '7aiK8zvtC7c', pdfUrl: 'https://drive.google.com/drive/folders/1h1833Cyf1zowQYfB1Y1EvQMiqpkItvyH?usp=drive_link' },
+        '06': { title: 'Simplificando um Golfinho', videoId: '6ArzJy7bT2M', pdfUrl: 'https://drive.google.com/drive/folders/1gsETFReidPZLdapUbwFCRxmBw6Z4YHX3?usp=drive_link' },
+        '07': { title: 'Simplificando um Cachorro', videoId: 'X2efMgpMx6w', pdfUrl: 'https://drive.google.com/drive/folders/1N-MOcvy9gBpFEXXud9hHsSLkJceU5rs7?usp=drive_link' },
+        '08': { title: 'Simplificando uma Vaca', videoId: 'wN6t_5L7hJY', pdfUrl: 'https://drive.google.com/drive/folders/1EeEb7yx_77U5jBllhFIRsGRHr7ACBtzn?usp=drive_link' },
+        '09': { title: 'Simplificando um Porco', videoId: '88A0SqDiDUA', pdfUrl: 'https://drive.google.com/drive/folders/1bqJ_uf5Rhb8MwMCeciof1eL0i5a1QvUm?usp=drive_link' },
+        '10': { title: 'Simplificando um Gatinho', videoId: 'uCS6nvxXp0s', pdfUrl: 'https://drive.google.com/drive/folders/1XQflS3pOLkF_Dbi9eMqx-0zK1bXIpG-s?usp=drive_link' }
     },
     '5': {
-        '01': { title: 'Rosto Frontal', videoId: 'hv2uTKx8tQA' },
-        '02': { title: 'Perfil e 3/4"', videoId: '_M74x1kEMoo' },
-        '03': { title: '3/4" Inverso e Invertido', videoId: 'BejpfVf8wDU' },
-        '04': { title: 'Um Novo Esboço!', videoId: 'TdL-HhnsrPg' },
-        '05': { title: 'Entendendo o Novo Esboço', videoId: 'pbrEXBjxVBQ' },
-        '06': { title: 'Rotação da Cabeça', videoId: 'zb5aXM2-JeA' },
-        '07': { title: 'Rotação Parte 2', videoId: 'e7-U-glh4RQ' }
+        '01': { title: 'Rosto Frontal', videoId: 'CQ5TiXwWRcw' },
+        '02': { title: 'Perfil e 3/4"', videoId: 'GiU2shM1TVw' },
+        '03': { title: '3/4" Inverso e Invertido', videoId: 'plk80s9C_Dw' },
+        '04': { title: 'Um Novo Esboço!', videoId: '8O8u4BUUUyc' },
+        '05': { title: 'Entendendo o Novo Esboço', videoId: 'AuX7dufZhog' },
+        '06': { title: 'Rotação da Cabeça', videoId: 'x26BJgxmEOk' },
+        '07': { title: 'Rotação Parte 2', videoId: '0OhF8c8z-cI' }
     },
     '6': {
-        '01': { title: 'Regras dos olhos - PARTE 01', videoId: 'Hfy03lb-BpU', pdfUrl: 'https://drive.google.com/drive/folders/1c_4ubUxlAjKa-3wi_qiZWoL6OlaNZkUU?usp=drive_link' },
-        '02': { title: 'Regras dos olhos - PARTE 02', videoId: 'JJXGo5WuLsU' },
-        '03': { title: 'Regras dos olhos - PARTE 03', videoId: 'KbmRKhdi4Oo', pdfUrl: 'https://drive.google.com/drive/folders/1Efx_ehi0V3E9FEApIDmbFx4FkF5c1BX9?usp=drive_link' },
-        '04': { title: 'Composição do Nariz', videoId: 'Mk4xTwDhYYI', pdfUrl: 'https://drive.google.com/drive/folders/16j9tondx9q0sfWvL09RexU-Tjw1swlI9?usp=drive_link' },
-        '05': { title: 'Cabelo Masculino', videoId: 'pNxpinbedJU', pdfUrl: 'https://drive.google.com/drive/folders/1aOi7pqkkslkTMeBTnpt_f75BCv2qEEFN?usp=drive_link' },
-        '06': { title: 'Cabelo Feminino', videoId: 'tLrnsoJasXs', pdfUrl: 'https://drive.google.com/drive/folders/1ncqbKmgvEl6HvKLEPnOePOr33Axu5xJM?usp=drive_link' }
+        '01': { title: 'Regras dos olhos - PARTE 01', videoId: 'YN9K0qOFiqA', pdfUrl: 'https://drive.google.com/drive/folders/1c_4ubUxlAjKa-3wi_qiZWoL6OlaNZkUU?usp=drive_link' },
+        '02': { title: 'Regras dos olhos - PARTE 02', videoId: 'FN8jqv6erZI' },
+        '03': { title: 'Regras dos olhos - PARTE 03', videoId: 'NNt13vHH9TI', pdfUrl: 'https://drive.google.com/drive/folders/1Efx_ehi0V3E9FEApIDmbFx4FkF5c1BX9?usp=drive_link' },
+        '04': { title: 'Composição do Nariz', videoId: 'NnTSJwZAELg', pdfUrl: 'https://drive.google.com/drive/folders/16j9tondx9q0sfWvL09RexU-Tjw1swlI9?usp=drive_link' },
+        '05': { title: 'Cabelo Masculino', videoId: 'IWwSNqMHle8', pdfUrl: 'https://drive.google.com/drive/folders/1aOi7pqkkslkTMeBTnpt_f75BCv2qEEFN?usp=drive_link' },
+        '06': { title: 'Cabelo Feminino', videoId: 'uoY9OQbIccU', pdfUrl: 'https://drive.google.com/drive/folders/1ncqbKmgvEl6HvKLEPnOePOr33Axu5xJM?usp=drive_link' }
     },
     '7': {
-        '01': { title: 'Felicidade', videoId: 'Rc9RlthP7PU', pdfUrl: 'https://drive.google.com/drive/folders/1WKM8vWbEaAidj8mn7hP6U2guIPFmnvET?usp=drive_link' },
-        '02': { title: 'Raiva', videoId: 'J-Jbk8a-qns' },
-        '03': { title: 'Tristeza', videoId: 'oliGbDGufDo' },
-        '04': { title: 'Medo', videoId: 'N-3dDfZssng' },
-        '05': { title: 'Ódio', videoId: 'NVLei07Z_eQ' }
+        '01': { title: 'Felicidade', videoId: 'ZwPCI6BGyYI', pdfUrl: 'https://drive.google.com/drive/folders/1WKM8vWbEaAidj8mn7hP6U2guIPFmnvET?usp=drive_link' },
+        '02': { title: 'Raiva', videoId: 'qhJ71rADyYY' },
+        '03': { title: 'Tristeza', videoId: '5ezJ3r7LQpw' },
+        '04': { title: 'Medo', videoId: 'FHS1qT3qEzM' },
+        '05': { title: 'Ódio', videoId: 'g_vpFHz8Ono' }
     },
     '8': {
-        '01': { title: 'Gohan e Videl', videoId: '3CIDZZf4BX8', pdfUrl: 'https://drive.google.com/drive/folders/1rilNx7ByNMbiIeXwmYJSZgtNTOIYC8mt?usp=drive_link' },
-        '02': { title: 'Naruto e Sasuke', videoId: 'kmw1HuSMWDs', pdfUrl: 'https://drive.google.com/drive/folders/1C_Smh0Mr1E1QiyBeQcK8rc1KLohQ-NIs?usp=drive_link' },
-        '03': { title: 'Goku e Android N°17', videoId: 'hWrcs1770Ng', pdfUrl: 'https://drive.google.com/drive/folders/1SpJTs7DXpqFg1uCPeLnMqA9EqR__Dg-N?usp=drive_link' },
-        '04': { title: 'Gohan e Kakashi', videoId: 'zarAmJXbPCU', pdfUrl: 'https://drive.google.com/drive/folders/1ZtLIzBuxl8hpewblQpY8yOMWo6Jt-CAa?usp=drive_link' },
-        '05': { title: 'Sakura e Sasuke', videoId: 'vSxR_h_K1lg', pdfUrl: 'https://drive.google.com/drive/folders/1q3DhzVeLOKoX4ctkIQwyi8TKlWBoqBUM?usp=drive_link' },
-        '06': { title: 'Android N°18 e Sarada', videoId: '-DcPaxehvVk', pdfUrl: 'https://drive.google.com/drive/folders/1oF717baD_H2QtmhMhflzt2swqqHHgjoZ?usp=drive_link' },
-        '07': { title: 'Tanjiro e Nezuko', videoId: 'SRFoFbLFirc', pdfUrl: 'https://drive.google.com/drive/folders/1tKjubRCnPdgL_DlbG28YElG46g36NPVB?usp=drive_link' }
+        '01': { title: 'Gohan e Videl', videoId: 'ke9y4Rx-4qk', pdfUrl: 'https://drive.google.com/drive/folders/1rilNx7ByNMbiIeXwmYJSZgtNTOIYC8mt?usp=drive_link' },
+        '02': { title: 'Naruto e Sasuke', videoId: 'kCXa5zMDSuI', pdfUrl: 'https://drive.google.com/drive/folders/1C_Smh0Mr1E1QiyBeQcK8rc1KLohQ-NIs?usp=drive_link' },
+        '03': { title: 'Goku e Android N°17', videoId: 'mP1qaTHi5UA', pdfUrl: 'https://drive.google.com/drive/folders/1SpJTs7DXpqFg1uCPeLnMqA9EqR__Dg-N?usp=drive_link' },
+        '04': { title: 'Gohan e Kakashi', videoId: 'evaUg6vxGwA', pdfUrl: 'https://drive.google.com/drive/folders/1ZtLIzBuxl8hpewblQpY8yOMWo6Jt-CAa?usp=drive_link' },
+        '05': { title: 'Sakura e Sasuke', videoId: '88gb874YxbI', pdfUrl: 'https://drive.google.com/drive/folders/1q3DhzVeLOKoX4ctkIQwyi8TKlWBoqBUM?usp=drive_link' },
+        '06': { title: 'Android N°18 e Sarada', videoId: 'Xg3XaI6BK4Q', pdfUrl: 'https://drive.google.com/drive/folders/1oF717baD_H2QtmhMhflzt2swqqHHgjoZ?usp=drive_link' },
+        '07': { title: 'Tanjiro e Nezuko', videoId: '6dFPf3XIm3g', pdfUrl: 'https://drive.google.com/drive/folders/1tKjubRCnPdgL_DlbG28YElG46g36NPVB?usp=drive_link' }
     },
     '9': {
-        '01': { title: 'Mão - Primeiro Treino', videoId: 'wB3kjVE5Xuc' },
-        '02': { title: 'Mão - Segundo Treino', videoId: 'kGMERYgQBeA', pdfUrl: 'https://drive.google.com/drive/folders/10zanU9OzQZLtxCZ-kuabf1dBpcaIN-5V?usp=drive_link' },
-        '03': { title: 'Mão - Terceiro Treino', videoId: 'NioCqiW-y4w', pdfUrl: 'https://drive.google.com/drive/folders/1CaZZEXcpinZEHV6y9Ghecz7DnKdHFdjC?usp=drive_link' },
-        '04': { title: 'Treino de Pé', videoId: 'xY3o0jXaj4c', pdfUrl: 'https://drive.google.com/drive/folders/1uODHTG3cxr6ycI9tkSTEVJw8LoFI5psK?usp=drive_link' }
+        '01': { title: 'Mão - Primeiro Treino', videoId: 'Paw9g0OoiLA' },
+        '02': { title: 'Mão - Segundo Treino', videoId: 'vg0-l1bAa-8', pdfUrl: 'https://drive.google.com/drive/folders/10zanU9OzQZLtxCZ-kuabf1dBpcaIN-5V?usp=drive_link' },
+        '03': { title: 'Mão - Terceiro Treino', videoId: 'AF74qIHyfEA', pdfUrl: 'https://drive.google.com/drive/folders/1CaZZEXcpinZEHV6y9Ghecz7DnKdHFdjC?usp=drive_link' },
+        '04': { title: 'Treino de Pé', videoId: 'K1YhwLEzc_U', pdfUrl: 'https://drive.google.com/drive/folders/1uODHTG3cxr6ycI9tkSTEVJw8LoFI5psK?usp=drive_link' }
     },
     '10': {
-        '01': { title: 'Corpo Frontal Masculino', videoId: 'ayO2qCD8ARQ', pdfUrl: 'https://drive.google.com/drive/folders/1egz29QkGTNM4mQQOCze3WSPHZbY8b6qV?usp=drive_link' },
-        '02': { title: 'Corpo Frontal Feminino', videoId: 'AYi0gFg6EkU' },
-        '03': { title: 'Corpo de Perfil ( 2 género)', videoId: 'zsoIUvrcU9g', pdfUrl: 'https://drive.google.com/drive/folders/1tbtky5KxRIGSzyBOS3PHKaomRJZVeEfs?usp=drive_link' },
-        '04': { title: 'Corpo de 3/4" ( 2 género)', videoId: 'iFU7QXykf0g', pdfUrl: 'https://drive.google.com/drive/folders/1E3jK5Ly7OGtG2wSLtT7HnUz31YyIOK_0?usp=drive_link' },
-        '05': { title: 'Corpo de Costa ( 2 género) ', videoId: '1Cv-JycjTM8', pdfUrl: 'https://drive.google.com/drive/folders/1nbwmw0jKShk6ZH5QQr7RZgkMk0SCtX1E?usp=drive_link' },
-        '06': { title: 'Treino de Altura - PARTE 01', videoId: 'Yz9T47FLhT8', pdfUrl: 'https://drive.google.com/drive/folders/1NIDo9PVOjDJuEzK07yHwEcMZ-Lqa56i3?usp=drive_link' },
-        '07': { title: 'Treino de Altura - PARTE 02', videoId: 'ykQqcuemUTc' },
-        '08': { title: 'Treino de Altura - PARTE 03', videoId: 'GkAQjbtlD6Y' }
+        '01': { title: 'Corpo Frontal Masculino', videoId: 'h_lTs5mIJuY', pdfUrl: 'https://drive.google.com/drive/folders/1egz29QkGTNM4mQQOCze3WSPHZbY8b6qV?usp=drive_link' },
+        '02': { title: 'Corpo Frontal Feminino', videoId: 'PSNOYIp7xkY' },
+        '03': { title: 'Corpo de Perfil ( 2 género)', videoId: '8Uonv3H-8oQ', pdfUrl: 'https://drive.google.com/drive/folders/1tbtky5KxRIGSzyBOS3PHKaomRJZVeEfs?usp=drive_link' },
+        '04': { title: 'Corpo de 3/4" ( 2 género)', videoId: 'gerYJ5sb5jo', pdfUrl: 'https://drive.google.com/drive/folders/1E3jK5Ly7OGtG2wSLtT7HnUz31YyIOK_0?usp=drive_link' },
+        '05': { title: 'Corpo de Costa ( 2 género) ', videoId: 'blI8QfOSsoU', pdfUrl: 'https://drive.google.com/drive/folders/1nbwmw0jKShk6ZH5QQr7RZgkMk0SCtX1E?usp=drive_link' },
+        '06': { title: 'Treino de Altura - PARTE 01', videoId: 'vpYREy_cmzI', pdfUrl: 'https://drive.google.com/drive/folders/1NIDo9PVOjDJuEzK07yHwEcMZ-Lqa56i3?usp=drive_link' },
+        '07': { title: 'Treino de Altura - PARTE 02', videoId: 'kkcpq6zK_aU' },
+        '08': { title: 'Treino de Altura - PARTE 03', videoId: '7bFqW6J58-s' }
     },
     'como-desenhar-1': {
         '01': { title: 'Aladdin', videoId: 'g5UMKjU9IlQ', pdfUrl: 'https://drive.google.com/drive/folders/185kUM49Sm85OUIZkCWlbI9dzxG4c1Nlt?usp=drive_link' }, '02': { title: 'Alice', videoId: 'AEPV7wrcMcA' }, '03': { title: 'Anna', videoId: 'qpahRSnYVDU' }, '04': { title: 'Ariel', videoId: 'jyL55tPe1uw' }, '05': { title: 'Branca de Neve', videoId: '6wV-S_2xYhw' }, '06': { title: 'Cinderela', videoId: 'd_ITYs-jCfg' }, '07': { title: 'Hércules', videoId: 'Z3MV0K3ILX0' }, '08': { title: 'Jasmine', videoId: 'vxSjNz5SZa4' }, '09': { title: 'Li Shang', videoId: 'loq3udIxtSs' }, '10': { title: 'Margarida', videoId: 'vNM5fu9h3dU' }, '11': { title: 'Mickey', videoId: 'HpgpAe_RR9Q' }, '12': { title: 'Minnie', videoId: 'YFyMFAnPiPo' }, '13': { title: 'Mulan', videoId: 'YiFrpBhKXRQ' }, '14': { title: 'Pateta', videoId: '-J6Vydw5Wso' }, '15': { title: 'Pato Donald', videoId: 'YbhJot8jb5Q' }, '16': { title: 'Peter Pan', videoId: 'f_FITuh139k' }, '17': { title: 'Pluto', videoId: 'ZV99adRsH1M' }, '18': { title: 'Pocahontas', videoId: 'yauh3N3mJYQ' }, '19': { title: 'Rapunzel', videoId: '5qdTMqde1LM' }, '20': { title: 'Tio Patinhas', videoId: '2a4RGaozcJ8' }
